@@ -6,6 +6,8 @@ import Homepage from './components/Homepage'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Login from './components/LoginPage'
 import Register from './components/RegisterPage'
+import Dashboard from './components/Dashboard'
+import BillScanner from './components/BillScanner'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +18,8 @@ function App() {
         <Route path='/' element={<Homepage></Homepage>} ></Route>
         <Route path='/login' element={<Login></Login>} ></Route>
         <Route path='/register' element={<Register></Register>} ></Route>
+        <Route path='/dashboard' element={<Dashboard></Dashboard>} ></Route>
+        <Route path='/scan' element={<BillScanner></BillScanner>} ></Route>
 
       </Routes>
      

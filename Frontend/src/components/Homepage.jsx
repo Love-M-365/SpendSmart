@@ -13,7 +13,6 @@ const HomePage = () => {
 
   return (
     <>
-      
       <nav
         id="navbar-example"
         className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm px-4"
