@@ -1,0 +1,781 @@
+Item,Category
+Kurta,Garments
+Saree,Garments
+Dhoti,Garments
+Dress,Garments
+Midi,Garments 
+T-shirt,Garments  
+Jeans,Garments   
+Hoodie,Garments  
+Sweater,Garments  
+Night Suit,Garments  
+Thermal Wear,Garments  
+Tank Top,Garments  
+Sherwani,Garments
+Lehenga,Garments
+Choli,Garments
+Dupatta,Garments
+Kurti,Garments
+Salwar,Garments
+Pajama,Garments
+Angarkha,Garments
+Nehru Jacket,Garments
+Lungi,Garments
+Mundu,Garments
+Pattu Pavadai,Garments
+Blouse,Garments
+Ghagra,Garments
+Phiran,Garments
+Churidaar,Garments
+Pagdi,Garments
+Frock,Garments
+Top,Garments
+shorts,Garments
+Poncho,Garments
+Overcoat,Garments
+Raincoat,Garments
+Cape,Garments
+Shrug,Garments
+Bolero,Garments
+Blazer,Garments
+Suit,Garments
+Tuxedo,Garments
+Waistcoat,Garments
+Jumpsuit,Garments
+Playsuit,Garments
+Dungarees,Garments
+Romper,Garments
+Kaftan,Garments
+Kimono,Garments
+Harem Pants,Garments
+Joggers,Garments
+Leggings,Garments
+Palazzo,Garments
+Skirt,Garments
+Pencil Skirt,Garments
+Wrap Skirt,Garments
+A-line Dress,Garments
+Maxi Dress,Garments
+Bodycon Dress,Garments
+Shift Dress,Garments
+Peplum Top,Garments
+Tube Top,Garments
+Crop Top,Garments
+Sweatshirt,Garments
+Track Pants,Garments
+Tights,Garments
+Anarkali,Garments
+Bandhgala,Garments
+Patiala Salwar,Garments
+Bell Bottoms,Garments
+Dhoti Pants,Garments
+Scarf,Garments
+Stole,Garments
+Paneer,Dairy
+Ghee,Dairy
+Cheese,Dairy 
+Dahi,Dairy
+Yogurt,Dairy
+Butter,Dairy
+Cream,Dairy
+Whey,Dairy
+Powdered Milk,Dairy
+Milk,Dairy
+White Butter,Dairy
+Cream Cheese,Dairy
+Whipped Cream,Dairy
+Buffalo Milk,Dairy
+Cow Milk,Dairy
+Full Cream Milk,Dairy
+Toned Milk,Dairy
+Double Toned Milk,Dairy
+Skimmed Milk,Dairy
+Raw Milk,Dairy
+Desi Ghee,Dairy
+Salted Butter,Dairy
+Amul Butter,Dairy
+Homemade Butter,Dairy
+Malai,Dairy
+Khoa,Dairy
+Chenna,Dairy
+Fresh Cream,Dairy
+Amul Cream,Dairy
+Milkmaid,Dairy
+Condensed Milk,Dairy
+Sweetened Condensed Milk,Dairy
+Milk Powder,Dairy
+Amulya Powder,Dairy
+Curd,Dairy
+Homemade Curd,Dairy
+Mishti Doi,Dairy
+Flavored Milk,Dairy
+Rose Milk,Dairy
+Badam Milk,Dairy
+Kesar Milk,Dairy
+Rabri,Dairy
+Basundi,Dairy
+Kalakand,Dairy
+Khurchan,Dairy
+Sandesh,Dairy
+Rasgulla,Dairy
+Rasmalai,Dairy
+Kheer,Dairy
+Milk Cake,Dairy
+Kulfi,Dairy
+Malai Barfi,Dairy
+Ghevar (Malai),Dairy
+Basmati Rice,Groceries
+Jaggery,Groceries
+Tur Dal,Groceries
+Gur,Groceries
+Egg,Groceries
+Chicken,Groceries 
+Fish,Groceries
+Baby Food,Groceries
+Biscuit,Groceries 
+Maggie,Groceries
+Noodles,Groceries
+Idli Mixture,Groceries
+Chana Sattu,Groceries
+Rice Sattu,Groceries
+Barley Flour,Groceries
+Methi Dana,Groceries
+Chironji,Groceries
+Black Salt,Groceries
+Amchur Powder,Groceries
+Kasuri Methi,Groceries
+Sambhar Powder,Groceries
+Rasam Powder,Groceries
+Curry Leaves,Groceries
+Kokum,Groceries
+Tandoori Masala,Groceries
+Sabudana,Groceries
+Papad,Groceries
+Sev,Groceries
+Basmati Rice,Groceries
+Tur Dal,Groceries
+Moong Dal,Groceries
+Chana Dal,Groceries
+Masoor Dal,Groceries
+Urad Dal,Groceries
+Atta,Groceries
+Maida,Groceries
+Besan,Groceries
+Suji,Groceries
+Poha,Groceries
+Sooji,Groceries
+Ragi Flour,Groceries
+Bajra,Groceries
+Jowar,Groceries
+Salt,Groceries
+Sugar,Groceries
+Jeera,Groceries
+Ajwain,Groceries
+Haldi Powder,Groceries
+Red Chili Powder,Groceries
+Coriander Powder,Groceries
+Garam Masala,Groceries
+Bay Leaf,Groceries
+Cloves,Groceries
+Cardamom,Groceries
+Cinnamon,Groceries
+Pepper,Groceries
+Fennel Seeds,Groceries
+Asafoetida,Groceries
+Fenugreek Seeds,Groceries
+Mustard Seeds,Groceries
+Tamarind,Groceries
+Dry Coconut,Groceries
+Desiccated Coconut,Groceries
+Bhujia,Groceries
+Farsan Mix,Groceries
+Rajgira Flour,Groceries
+Singhara Flour,Groceries
+Hing,Groceries
+Basmati Rice, Groceries  
+Toor Dal, Groceries  
+Cooking Oil, Groceries  
+Moong Dal, Groceries  
+Garam Masala, Groceries  
+Salt, Groceries  
+Sugar, Groceries  
+Tea Leaves, Groceries  
+Coffee Powder, Groceries  
+Poha, Groceries  
+Dosa,Food 
+Noodles,Food
+Idli,Food
+Cake,Food
+Butter Chicken,Food 
+Soya Chaap,Food 
+Spring Roll,Food  
+Momos,Food 
+Pizza,Food 
+Chilli Paneer,Food
+Burger,Food  
+Chowmien,Food 
+Paneer Butter Masala,Food
+Chole Bhature,Food
+Rajma Chawal,Food
+Butter Chicken,Food
+Palak Paneer,Food
+Aloo Paratha,Food
+Masala Dosa,Food
+Idli Sambar,Food
+Vada Pav,Food
+Pav Bhaji,Food
+Dhokla,Food
+Khandvi,Food
+Thepla,Food
+Baingan Bharta,Food
+Sarson da Saag,Food
+Makki di Roti,Food
+Kadhi Chawal,Food
+Dal Makhani,Food
+Shahi Paneer,Food
+Tandoori Roti,Food
+Naan,Food
+Stuffed Naan,Food
+Roomali Roti,Food
+Veg Biryani,Food
+Hyderabadi Biryani,Food
+Chicken Biryani,Food
+Mutton Curry,Food
+Fish Curry,Food
+Prawn Masala,Food
+Methi Thepla,Food
+Undhiyu,Food
+Malai Kofta,Food
+Navratan Korma,Food
+Korma,Food
+Kheema Pav,Food
+Seekh Kebab,Food
+Chicken Tikka,Food
+Paneer Tikka,Food
+Samosa,Food
+Kachori,Food
+Poha,Food
+Upma,Food
+Pesarattu,Food
+Khichdi,Food
+Bhindi Masala,Food
+Litti Chokha,Food
+Momos,Food
+Hakka Noodles,Food
+Manchurian,Food
+Veg Pulao,Food
+Tomato Soup,Food
+Sweet Corn Soup,Food
+Hot and Sour Soup,Food
+Egg Curry,Food
+Anda Bhurji,Food
+Boiled Egg,Food
+Omelette,Food
+Egg Roll,Food
+Egg Fried Rice,Food
+Chicken Roll,Food
+Paneer Roll,Food
+Paneer Frankie,Food
+Chicken Frankie,Food
+Dal Tadka,Food
+Tamarind Rice,Food
+Curd Rice,Food
+Lemon Rice,Food
+Jeera Rice,Food
+Ghee Rice,Food
+Plain Rice,Food
+Plain Paratha,Food
+Lachha Paratha,Food
+Missi Roti,Food
+Besan Chilla,Food
+Paneer Chilla,Food
+Veg Sandwich,Food
+Grilled Sandwich,Food
+Cheese Sandwich,Food
+Cheese Burst Pizza,Food
+Cheesy Garlic Bread,Food
+Garlic Naan,Food
+Butter Naan,Food
+Rava Dosa,Food
+Onion Dosa,Food
+Set Dosa,Food
+Bread Pakora,Food
+Aloo Tikki,Food
+Chana Masala,Food
+Bhature,Food
+Shake,Beverage 
+Coke,Beverage 
+Pepsi,Beverage 
+Miranda,Beverage 
+Fanta,Beverage 
+Rasna,Beverage 
+Tang,Beverage 
+GluconD,Beverage 
+Coconut Water,Beverage 
+Masala Chai,Beverages
+Adrak Chai,Beverages
+Elaichi Chai,Beverages
+Green Tea,Beverages
+Lemon Tea,Beverages
+Black Tea,Beverages
+Kashmiri Kahwa,Beverages
+Filter Coffee,Beverages
+South Indian Coffee,Beverages
+Instant Coffee,Beverages
+Cold Coffee,Beverages
+Sweet Lassi,Beverages
+Salted Lassi,Beverages
+Mango Lassi,Beverages
+Chaas,Beverages
+Buttermilk,Beverages
+Sol Kadhi,Beverages
+Jaljeera,Beverages
+Aam Panna,Beverages
+Sugarcane Juice,Beverages
+Nimbu Pani,Beverages
+Shikanji,Beverages
+Bel Sharbat,Beverages
+Rose Sharbat,Beverages
+Thandai,Beverages
+Badam Milk,Beverages
+Kesar Milk,Beverages
+Haldi Doodh,Beverages
+Falooda,Beverages
+Rooh Afza,Beverages
+Sattu Sharbat,Beverages
+Coconut Water,Beverages
+Fruit Juice,Beverages
+Apple Juice,Beverages
+Orange Juice,Beverages
+Pineapple Juice,Beverages
+Watermelon Juice,Beverages
+Mosambi Juice,Beverages
+Carrot Juice,Beverages
+Mixed Fruit Juice,Beverages
+Energy Drink,Beverages
+Soda,Beverages
+Lemon Soda,Beverages
+Cola,Beverages
+Mojito,Beverages
+Bloody Mary,Beverages
+Screwdriver,Beverages
+Cosmopolitan,Beverages
+Long Island Iced Tea,Beverages
+Margarita,Beverages
+Tequila Sunrise,Beverages
+Whiskey Sour,Beverages
+Old Fashioned,Beverages
+Mai Tai,Beverages
+Mint Julep,Beverages
+Martini,Beverages
+Espresso Martini,Beverages
+Pina Colada,Beverages
+Rum Punch,Beverages
+Gin and Tonic,Beverages
+Vodka Cranberry,Beverages
+Negroni,Beverages
+Caipirinha,Beverages
+Manhattan,Beverages
+Cuba Libre,Beverages
+Irish Coffee,Beverages
+Sangria,Beverages
+Blue Lagoon,Beverages
+Sex on the Beach,Beverages
+Beer, Beverage 
+Pickle,Gourmet
+Ice-Cream,Gourmet
+Icecream,Gourmet 
+Icecream sundae,Gourmet
+Amla Candy,Gourmet
+Chikki,Gourmet
+Gond Ladoo,Gourmet
+Sattu Drink,Gourmet
+Thandai,Gourmet
+Halwa,Gourmet
+Saffron Milk Mix,Gourmet
+Dry Fruit Mix,Gourmet
+Til Ladoo,Gourmet
+Boondi Ladoo,Gourmet
+Sandesh,Gourmet
+Kaju Katli,Gourmet
+Peda,Gourmet
+Rabri,Gourmet
+Kheer,Gourmet
+Sheera,Gourmet
+Seviyan Kheer,Gourmet
+Sooji Halwa,Gourmet
+Besan Ladoo,Gourmet
+Puran Poli,Gourmet
+Lapsi,Gourmet
+Murukku,Gourmet
+Kuzhi Paniyaram,Gourmet
+Modak,Gourmet
+Sundal,Gourmet
+Pithla,Gourmet
+Handvo,Gourmet
+Pongal,Gourmet
+Masala Chai,Gourmet
+Amla Candy,Gourmet
+Chocolate, Gourmet
+Kajal,Beauty and Wellness
+Bindi,Beauty and Wellness
+Sindoor,Beauty and Wellness
+Razor,Beauty and Wellness 
+Tampon,Beauty and Wellness
+Sanitary pads,Beauty and Wellness 
+menstrural cups,Beauty and Wellness 
+Lipstick,Beauty and Wellness 
+Deodorant,Beauty and Wellness
+Bathing Soap ,Beauty and Wellness
+Shampoo,Beauty and Wellness  
+Conditioner,Beauty and Wellness  
+Hair Oil,Beauty and Wellness  
+Face Wash,Beauty and Wellness  
+Moisturizer,Beauty and Wellness  
+Sunscreen,Beauty and Wellness  
+Lip Balm,Beauty and Wellness  
+Eyeliner,Beauty and Wellness  
+Compact Powder,Beauty and Wellness  
+Foundation,Beauty and Wellness  
+Makeup Remover,Beauty and Wellness  
+Face Cream,Beauty and Wellness  
+Aloe Vera Gel,Beauty and Wellness  
+Body Lotion,Beauty and Wellness  
+Body Wash,Beauty and Wellness  
+Perfume,Beauty and Wellness   
+Hand Wash,Beauty and Wellness     
+Hair Gel,Beauty and Wellness  
+Shaving Cream,Beauty and Wellness   
+Cotton Pads,Beauty and Wellness   
+Nail Polish,Beauty and Wellness 
+Concealer,Beauty and Wellness 
+Nail Polish Remover,Beauty and Wellness  
+Hair Serum,Beauty and Wellness  
+Face Serum,Beauty and Wellness  
+Eye Cream,Beauty and Wellness  
+Toner,Beauty and Wellness  
+Dry Shampoo,Beauty and Wellness  
+Lip Scrub,Beauty and Wellness  
+Makeup Brush,Beauty and Wellness  
+Blush, Beauty and Wellness  
+BB Cream, Beauty and Wellness  
+Sheet Mask,Beauty and Wellness
+Handmade Soap,Daily Need
+Talcum Powder,Daily Need
+Herbal Shampoo,Daily Need
+Henna Powder,Daily Need
+Toothpaste,Beauty and Wellness   
+Toothbrush,Beauty and Wellness   
+Mouthwash,Beauty and Wellness   
+Neem Oil,Daily Need
+Multani Mitti,Daily Need
+Chyawanprash,Daily Need
+Coconut Oil,Daily Need
+Shikakai Powder,Daily Need
+Tooth Powder,Daily Need
+Toilet Paper, Daily Needs  
+Detergent, Daily Needs  
+Dish Soap, Daily Needs  
+Hand Towel, Daily Needs  
+Toilet Cleaner, Daily Needs  
+Bucket, Daily Needs  
+Dustbin, Daily Needs  
+Moringa Powder,Daily Need
+Giloy Juice,Daily Need
+Amla Powder,Daily Need
+Ashwagandha Powder,Daily Need
+Turmeric Paste,Daily Need
+Tulsi Drops,Daily Need
+Copper Water Bottle,Daily Need
+Clay Pot,Daily Need
+Steel Tiffin,Daily Need
+Rose Water,Daily Need
+Itar (Natural Perfume),Daily Need
+Bamboo Toothbrush,Daily Need
+Earthen Cookware,Daily Need
+Utensils,Daily Need
+Pestle & Mortar,Daily Need
+Handwoven Bag,Daily Need
+Jute Bag,Daily Need
+Khadi Mask,Daily Need
+Camphor,Daily Need 
+Agarbatti,Daily Need
+Dhoop Sticks,Daily Need 
+Rudraksha Mala,Daily Need
+Hawan samagiri,Daily Need 
+Brass Diya,Daily Need
+Puja Thali,Daily Need
+Roli-Chawal Pack,Daily Need 
+Cow Dung Cake,Daily Need
+Gobar Diyas,Daily Need
+Sandalwood Paste,Daily Need
+Neem Comb,Daily Need
+Herbal Balm,Daily Need
+Lavang Oil,Daily Need
+Notebook,Stationery
+Pen,Stationery
+Pencil,Stationery
+Eraser,Stationery
+Sharpener,Stationery
+Scale,Stationery
+Compass,Stationery
+Protractor,Stationery
+Highlighter,Stationery
+Marker,Stationery
+Stapler,Stationery
+Staples,Stationery
+Glue Stick,Stationery
+Sketch Pens,Stationery
+A4 Sheets,Stationery
+File Folder,Stationery
+Whiteboard,Stationery
+Blackboard Chalk,Stationery
+Post-it Notes,Stationery
+Correction Pen,Stationery
+Paper Clips,Stationery
+Book,Stationery
+Binder Clips,Stationery
+Sticky Notes,Stationery
+Scissors,Stationery
+Drawing Book,Stationery
+Apple,Fruits
+Banana,Fruits
+Mango,Fruits
+Papaya,Fruits
+Guava,Fruits
+Pineapple,Fruits
+Watermelon,Fruits
+Muskmelon,Fruits
+Grapes,Fruits
+Orange,Fruits
+Sweet Lime,Fruits
+Pomegranate,Fruits
+Jackfruit,Fruits
+Lychee,Fruits
+Custard Apple,Fruits
+Dragon Fruit,Fruits
+Kiwi,Fruits
+Pear,Fruits
+Plum,Fruits
+Cherry,Fruits
+Sapota,Fruits
+Fig,Fruits
+Seb,Fruits
+Kela,Fruits
+Aam,Fruits
+Papita,Fruits
+Amrood,Fruits
+Ananas,Fruits
+Tarbooz,Fruits
+Kharbooja,Fruits
+Angoor,Fruits
+Santra,Fruits
+Mausambi,Fruits
+Anaar,Fruits
+Kathal,Fruits
+Litchi,Fruits
+Sitaphal,Fruits
+Dragon Phal,Fruits
+Kiwi,Fruits
+Nashpati,Fruits
+Aloo Bukhara,Fruits
+Cherry,Fruits
+Chikoo,Fruits
+Anjeer,Fruits
+Ber,Fruits
+Jamun,Fruits
+Ber,Fruits
+Jamun,Fruits
+Tomato,Vegetables
+Potato,Vegetables
+Onion,Vegetables
+Carrot,Vegetables
+Radish,Vegetables
+Beetroot,Vegetables
+Cabbage,Vegetables
+Cauliflower,Vegetables
+Spinach,Vegetables
+Fenugreek Leaves,Vegetables
+Coriander Leaves,Vegetables
+Mint Leaves,Vegetables
+Green Peas,Vegetables
+Brinjal,Vegetables
+Lady Finger,Vegetables
+Bottle Gourd,Vegetables
+Bitter Gourd,Vegetables
+Ridge Gourd,Vegetables
+Pumpkin,Vegetables
+Cucumber,Vegetables
+Green Chilli,Vegetables
+Garlic,Vegetables
+Ginger,Vegetables
+Turnip,Vegetables
+Tamatar,Vegetables
+Aloo,Vegetables
+Pyaaz,Vegetables
+Gajar,Vegetables
+Mooli,Vegetables
+Chukandar,Vegetables
+Patta Gobhi,Vegetables
+Phool Gobhi,Vegetables
+Palak,Vegetables
+Methi,Vegetables 
+Dhaniya Patta,Vegetables
+Pudina Patta,Vegetables
+Hari Matar,Vegetables
+Baingan,Vegetables
+Bhindi,Vegetables
+Lauki,Vegetables
+Karela,Vegetables
+Tori,Vegetables
+Kaddu,Vegetables
+Kheera,Vegetables
+Hari Mirch,Vegetables
+Lahsun,Vegetables
+Adrak,Vegetables
+Shalgam,Vegetables
+Auto,Travel 
+Cab,Travel
+Van,Travel  
+Uber,Travel 
+Rapido,Travel  
+Ola,Travel
+rickshaw,Travel 
+Train,Travel
+Flight,Travel
+Hostel Accomodation,Rent 
+House,Rent
+Furniture,Rent 
+Vessels,Rent 
+Netflix,Subscription  
+Spotify,Subscription  
+Amazon Prime,Subscription  
+Udemy,Subscription  
+Skillshare,Subscription  
+Zoom Pro,Subscription  
+Grammarly,Subscription  
+Headspace,Subscription  
+Notion Pro,Subscription  
+Canva Pro,Subscription  
+LED Bulb,Electronics      
+CFL Bulb,Electronics      
+Halogen Bulb,Electronics     
+Tube Light,Electronics     
+Emergency Light,Electronics    
+Ceiling Light,Electronics    
+Night Lamp,Electronics    
+Decorative Lights,Electronics    
+Fairy Lights,Electronics    
+Chandelier,Electronics    
+Pendant Light,Electronics    
+Wall Light,Electronics    
+Lamp,Electronics    
+Study Lamp,Electronics        
+Ring Light,Electronics    
+Torch,Electronics    
+Flashlight,Electronics    
+Solar Light,Electronics    
+Smart Bulb,Electronics    
+Bulb Holder,Electronics    
+Lamp Holder,Electronics    
+Ceiling Fan,Electronics    
+Fan,Electronics    
+Wall Fan,Electronics    
+Pedestal Fan,Electronics    
+Exhaust Fan,Electronics    
+Tower Fan,Electronics    
+Cooler,Electronics    
+Air Conditioner,Electronics    
+Room Heater,Electronics    
+Oil Heater,Electronics    
+Electric Kettle,Electronics    
+Electric Iron,Electronics    
+Induction Cooktop,Electronics    
+Microwave Oven,Electronics    
+Toaster,Electronics    
+Grill,Electronics    
+Sandwich Maker,Electronics    
+Rice Cooker,Electronics    
+Air Fryer,Electronics    
+Chimney,Electronics    
+Geyser,Electronics    
+Water Purifier,Electronics    
+Washing Machine,Electronics    
+Refrigerator,Electronics    
+Dishwasher,Electronics    
+Inverter,Electronics      
+Battery,Electronics      
+UPS,Electronics      
+Stabilizer,Electronics      
+Voltage Converter,Electronics      
+Power Strip,Electronics      
+Extension Cord,Electronics      
+Surge Protector,Electronics      
+Switch,Electronics      
+Socket,Electronics      
+Fan Regulator,Electronics      
+Door Bell,Electronics      
+Digital Thermometer,Electronics      
+Electric Weighing Scale,Electronics      
+Electric Toothbrush,Electronics      
+Hair Dryer,Electronics      
+Hair Straightener,Electronics      
+Trimmer,Electronics      
+Shaver,Electronics     
+Smartphone,Electronics    
+Tablet,Electronics    
+Laptop,Electronics    
+Desktop,Electronics    
+Keyboard,Electronics    
+Mouse,Electronics    
+Monitor,Electronics    
+Speaker,Electronics    
+Headphones,Electronics    
+Earphones,Electronics    
+Wireless Earbuds,Electronics    
+Webcam,Electronics    
+Printer,Electronics    
+Scanner,Electronics    
+WiFi Router,Electronics    
+Modem,Electronics    
+Set Top Box,Electronics    
+Smart TV,Electronics    
+Remote Control,Electronics    
+HDMI Cable,Electronics    
+USB Cable,Electronics    
+Ethernet Cable,Electronics    
+Mobile Charger,Electronics    
+Laptop Charger,Electronics    
+Power Bank,Electronics    
+Memory Card,Electronics    
+Pen Drive,Electronics    
+External Hard Drive,Electronics  
+Bluetooth Speaker,Electronics  
+Sofa,Furniture
+Recliner,Furniture
+Armchair,Furniture
+Dining Table,Furniture
+Dining Chair,Furniture
+Coffee Table,Furniture
+Center Table,Furniture
+Study Table,Furniture
+Office Chair,Furniture
+Bookshelf,Furniture
+TV Unit,Furniture
+Shoe Rack,Furniture
+Wardrobe,Furniture
+Cupboard,Furniture
+Bed,Furniture
+Single Bed,Furniture
+Double Bed,Furniture
+Queen Size Bed,Furniture
+King Size Bed,Furniture
+Bunk Bed,Furniture
+Dressing Table,Furniture
+Nightstand,Furniture
+Chest of Drawers,Furniture
+Folding Table,Furniture
+Plastic Chair,Furniture
+Table,Furniture
+
+
