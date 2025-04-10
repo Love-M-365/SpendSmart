@@ -8,6 +8,7 @@ import Login from './components/LoginPage'
 import Register from './components/RegisterPage'
 import Dashboard from './components/Dashboard'
 import BillScanner from './components/BillScanner'
+import AddTransaction from './components/Manual'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ function App() {
         <Route path='/register' element={<Register></Register>} ></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>} ></Route>
         <Route path='/scan' element={<BillScanner></BillScanner>} ></Route>
+        <Route path='/manual' element={<AddTransaction></AddTransaction>} ></Route>
 
       </Routes>
      
