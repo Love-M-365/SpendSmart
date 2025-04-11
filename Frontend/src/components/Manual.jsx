@@ -63,7 +63,7 @@ export default function AddTransaction() {
   return (
     <>
     <Navbar></Navbar>
-    <div className="container mt-5">
+    <div className="container " style={{marginTop:"5rem"}}>
       <h2 className="mb-4 text-center">Add a Transaction</h2>
       <form onSubmit={handleSubmit}>
         <div className="row">
@@ -78,6 +78,7 @@ export default function AddTransaction() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
+                placeholder="Enter expense title"
               />
             </div>
 
@@ -90,6 +91,7 @@ export default function AddTransaction() {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 required
+                placeholder="Enter category"
               />
             </div>
 
@@ -102,18 +104,13 @@ export default function AddTransaction() {
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 required
+                placeholder="Enter amount"
               />
             </div>
-
-            {/* Payment Mode */}
-           
           </div>
 
           {/* Right Column */}
           <div className="col-md-6 mb-3">
-            {/* Contributors */}
-
-
             {/* Payment To */}
             <div className="form-group">
               <label className="form-label">Payment To</label>
@@ -123,18 +120,26 @@ export default function AddTransaction() {
                 value={paymentTo}
                 onChange={(e) => setPaymentTo(e.target.value)}
                 required
+                placeholder="Enter payment recipient"
               />
             </div>
+
+            {/* Payment Mode */}
             <div className="form-group">
               <label className="form-label">Payment Mode</label>
-             
-              <select name="gender" value={paymentMode} className="form-control" onChange={(e) => setPaymentMode(e.target.value)} required>
-              <option value="">Select mode</option>
-              <option value="Male">Cash</option>
-              <option value="Female">Bank</option>
-             
-            </select>
+              <select
+                value={paymentMode}
+                className="form-control"
+                onChange={(e) => setPaymentMode(e.target.value)}
+                required
+              >
+                <option value="">Select mode</option>
+                <option value="Cash">Cash</option>
+                <option value="Bank">Bank</option>
+              </select>
             </div>
+
+            {/* Contributors */}
             <div className="form-group">
               <label className="form-label">Contributors</label>
               <input
@@ -158,17 +163,14 @@ export default function AddTransaction() {
                 ))}
               </ul>
             </div>
-            {/* Hidden Transaction ID */}
-            <input type="hidden" value={transactionId} />
 
             {/* Submit Button */}
-            
-          </div>
-          <div className="text-center">
+            <div className="text-center">
               <button type="submit" className="btn btn-primary w-50">
                 Add Transaction
               </button>
             </div>
+          </div>
         </div>
       </form>
     </div>

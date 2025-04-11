@@ -117,34 +117,70 @@ const BillScanner = () => {
 
   return (
     <>
-    <Navbar></Navbar>
-    <div className="container mt-5">
-      <h3 className="mb-4">📄 Bill Scanner</h3>
+      <Navbar />
+      <div className="container " style={{marginTop:"5rem"}}>
+        <h3 className="mb-4 text-center text-primary">📄 Bill Scanner</h3>
 
-      <div className="mb-3">
-        <input type="file" className="form-control" accept="image/*" onChange={handleUpload} />
+        <div className="row justify-content-center mb-4">
+          <div className="col-md-6">
+            <input
+              type="file"
+              className="form-control form-control-lg"
+              accept="image/*"
+              onChange={handleUpload}
+              style={{ borderRadius: '10px' }}
+            />
+          </div>
+        </div>
+
+        <div className="row justify-content-center mb-4">
+          <div className="col-md-4 d-flex justify-content-center">
+            <button
+              className="btn btn-primary btn-lg me-3"
+              onClick={handleCameraClick}
+              style={{ borderRadius: '10px' }}
+            >
+              📷 Open Camera
+            </button>
+            <button
+              className="btn btn-success btn-lg"
+              onClick={captureImage}
+              style={{ borderRadius: '10px' }}
+            >
+              📸 Capture Image
+            </button>
+          </div>
+        </div>
+
+        <div className="row justify-content-center mb-4">
+          <div className="col-md-8">
+            <video
+              ref={videoRef}
+              width="100%"
+              height="auto"
+              className="mb-3 border rounded shadow-lg"
+              style={{ borderRadius: '10px' }}
+            />
+            <canvas ref={canvasRef} width="640" height="480" style={{ display: 'none' }} />
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <h5 className="text-dark">Extracted Text:</h5>
+          <pre
+            className="bg-light p-3 border rounded"
+            style={{ maxHeight: '300px', overflowY: 'auto' }}
+          >
+            {extractedText}
+          </pre>
+
+          <h5 className="mt-4 text-dark">Transaction Details</h5>
+          <div className="border p-3 rounded bg-light shadow-sm">
+            <h6>Total Amount: <span className="text-success">₹{totalAmount}</span></h6>
+            <h6>Category: <span className="text-info">{category}</span></h6>
+          </div>
+        </div>
       </div>
-
-      <div className="mb-3">
-        <button className="btn btn-primary me-2" onClick={handleCameraClick}>
-          📷 Open Camera
-        </button>
-        <button className="btn btn-success" onClick={captureImage}>
-          📸 Capture Image
-        </button>
-      </div>
-
-      <div className="mb-3">
-        <video ref={videoRef} width="100%" height="auto" className="mb-3 border" />
-        <canvas ref={canvasRef} width="640" height="480" style={{ display: 'none' }} />
-      </div>
-
-      <h5>Extracted Text:</h5>
-      <pre className="bg-light p-3 border rounded">{extractedText}</pre>
-
-      <h6 className="mt-3">Total Amount: ₹{totalAmount}</h6>
-      <h6>Category: {category}</h6>
-    </div>
     </>
   );
 };
