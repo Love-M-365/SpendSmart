@@ -2,22 +2,30 @@ from fuzzywuzzy import process, fuzz
 import pandas as pd
 
 # Load dataset
-df = pd.read_csv("DataSet.csv")
+df = pd.read_csv("C:\\Users\\Dakshyani Murari\\OneDrive\\Desktop\\spend smart GIT\\SpendSmart\\AI\\DataSet.csv")
 
 # Create lowercase mapping
 item_to_category = dict(zip(df['Item'].str.lower(), df['Category']))
 
 # Function to categorize item
+def preprocess_item(item):
+    # Common descriptors to remove"
+    remove_words = ["veg", "non-veg","non veg", "spicy", "fried", "grilled","chilled", "Hot" ]
+    item = item.lower()
+    for word in remove_words:
+        item = item.replace(word, "")
+    return item.strip()
+
 def categorize_item(item):
-    item_lower = item.lower()
+    item_cleaned = preprocess_item(item)
 
     # 1. Exact match
-    if item_lower in item_to_category:
-        return item_to_category[item_lower]
+    if item_cleaned in item_to_category:
+        return item_to_category[item_cleaned]
 
     # 2. Fuzzy match
     match, score = process.extractOne(
-        item_lower,
+        item_cleaned,
         item_to_category.keys(),
         scorer=fuzz.token_sort_ratio
     )
@@ -27,8 +35,9 @@ def categorize_item(item):
     else:
         return "Miscellaneous"
 
+
 # Test items
-test_items = ["roll", "kadhai paneer", "paneer", "smartphone", "auto","hostel accomodation", "toothbrush", "shaving cream"]
+test_items = ["rajma chawal","fruit chill","chocolate","t-shirt","jhumke","chilled beer","spicy noodles"," hot and sour soup", "veg manchurian"]
 
 for item in test_items:
     print(f"{item} → {categorize_item(item)}")

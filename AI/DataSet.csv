@@ -217,7 +217,6 @@ Chowmien,Food
 Paneer Butter Masala,Food
 Chole Bhature,Food
 Rajma Chawal,Food
-Butter Chicken,Food
 Palak Paneer,Food
 Aloo Paratha,Food
 Masala Dosa,Food
@@ -235,6 +234,49 @@ Dal Makhani,Food
 Shahi Paneer,Food
 Tandoori Roti,Food
 Naan,Food
+item,food
+Tandoori Chicken,Food
+Paneer Tikka,Food
+Hakka Noodles,Food
+Veg Manchurian,Food
+Schezwan Fried Rice,Food
+Kung Pao Chicken,Food
+Spring Rolls,Food
+Hot and Sour Soup,Food
+Dragon Chicken,Food
+Chicken Lollipop,Food
+Gobi Manchurian,Food
+Pani Puri,Food
+Gol Gappe,Food
+Aloo Tikki,Food
+Pav Bhaji,Food
+Dabeli,Food
+Aloo Tikki,Food
+Kathi Roll,Food
+Samosa Chaat,Food
+Sev Puri,Food
+Bread Pakora,Food
+Egg Roll,Food
+Pasta Alfredo,Food
+Grilled Chicken,Food
+Veg Lasagna,Food
+Garlic Bread,Food
+Caesar Salad,Food
+Cheese Omelette,Food
+Baked Mac and Cheese,Food
+Fish and Chips,Food
+Stuffed Bell Peppers,Food
+Roast Chicken,Food
+Butter Garlic Prawns,Food
+Peri Peri Fries,Food
+Cream of Mushroom Soup,Food
+Bruschetta,Food
+Veggie Burger,Food
+Herb Roasted Potatoes,Food
+Tacos,Food
+Quesadilla,Food
+Cheese Nachos,Food
+French Toast,Food
 Stuffed Naan,Food
 Roomali Roti,Food
 Veg Biryani,Food
@@ -263,12 +305,36 @@ Litti Chokha,Food
 Momos,Food
 Hakka Noodles,Food
 Manchurian,Food
+Tandoori Roti,Food
+Phulka,Food
+Chapati,Food
+Roomali Roti,Food
 Veg Pulao,Food
 Tomato Soup,Food
 Sweet Corn Soup,Food
 Hot and Sour Soup,Food
+Naan,Food
+Roti, Food
+Parantha,Food
+Butter Naan,Food
+Garlic Naan,Food
+Stuffed Naan,Food
+Plain Paratha,Food
+Aloo Paratha,Food
+Gobhi Paratha,Food
+Paneer Paratha,Food
+Mooli Paratha,Food
+Onion Paratha,Food
+Kulcha,Food
+Paneer Kulcha,Food
+Amritsari Kulcha,Food
+Puran Poli,Food
+Cheese Paratha,Food
+Chana Dal Paratha,Food
+Sattu Paratha,Food
 Egg Curry,Food
 Anda Bhurji,Food
+Lachha Paratha,Food
 Boiled Egg,Food
 Omelette,Food
 Egg Roll,Food
@@ -277,6 +343,7 @@ Chicken Roll,Food
 Paneer Roll,Food
 Paneer Frankie,Food
 Chicken Frankie,Food
+cheesy twisted potatoes,Food
 Dal Tadka,Food
 Tamarind Rice,Food
 Curd Rice,Food
@@ -286,10 +353,13 @@ Ghee Rice,Food
 Plain Rice,Food
 Plain Paratha,Food
 Lachha Paratha,Food
+Roll,Food
+Biryani,Food
 Missi Roti,Food
 Besan Chilla,Food
 Paneer Chilla,Food
 Veg Sandwich,Food
+Biryani,Food
 Grilled Sandwich,Food
 Cheese Sandwich,Food
 Cheese Burst Pizza,Food
@@ -298,6 +368,27 @@ Garlic Naan,Food
 Butter Naan,Food
 Rava Dosa,Food
 Onion Dosa,Food
+Ice-Cream,Food
+Icecream,Food 
+Icecream sundae,Food
+Chikki,Food
+Gond Ladoo,Food
+Halwa,Food
+Dry Fruit Mix,Food
+Til Ladoo,Food
+Boondi Ladoo,Food
+Sandesh,Food
+Kaju Katli,Food
+Peda,Food
+Rabri,Food
+Kheer,Food
+Sheera,Food
+Seviyan Kheer,Food
+Sooji Halwa,Food
+Besan Ladoo,Food
+Modak,Food
+Pongal,Food
+Chocolate, Food
 Set Dosa,Food
 Bread Pakora,Food
 Aloo Tikki,Food
@@ -312,111 +403,79 @@ Rasna,Beverage
 Tang,Beverage 
 GluconD,Beverage 
 Coconut Water,Beverage 
-Masala Chai,Beverages
-Adrak Chai,Beverages
-Elaichi Chai,Beverages
-Green Tea,Beverages
-Lemon Tea,Beverages
-Black Tea,Beverages
-Kashmiri Kahwa,Beverages
-Filter Coffee,Beverages
-South Indian Coffee,Beverages
-Instant Coffee,Beverages
-Cold Coffee,Beverages
-Sweet Lassi,Beverages
-Salted Lassi,Beverages
-Mango Lassi,Beverages
-Chaas,Beverages
-Buttermilk,Beverages
-Sol Kadhi,Beverages
-Jaljeera,Beverages
-Aam Panna,Beverages
-Sugarcane Juice,Beverages
-Nimbu Pani,Beverages
-Shikanji,Beverages
-Bel Sharbat,Beverages
-Rose Sharbat,Beverages
-Thandai,Beverages
-Badam Milk,Beverages
-Kesar Milk,Beverages
-Haldi Doodh,Beverages
-Falooda,Beverages
-Rooh Afza,Beverages
-Sattu Sharbat,Beverages
-Coconut Water,Beverages
-Fruit Juice,Beverages
-Apple Juice,Beverages
-Orange Juice,Beverages
-Pineapple Juice,Beverages
-Watermelon Juice,Beverages
-Mosambi Juice,Beverages
-Carrot Juice,Beverages
-Mixed Fruit Juice,Beverages
-Energy Drink,Beverages
-Soda,Beverages
-Lemon Soda,Beverages
-Cola,Beverages
-Mojito,Beverages
-Bloody Mary,Beverages
-Screwdriver,Beverages
-Cosmopolitan,Beverages
-Long Island Iced Tea,Beverages
-Margarita,Beverages
-Tequila Sunrise,Beverages
-Whiskey Sour,Beverages
-Old Fashioned,Beverages
-Mai Tai,Beverages
-Mint Julep,Beverages
-Martini,Beverages
-Espresso Martini,Beverages
-Pina Colada,Beverages
-Rum Punch,Beverages
-Gin and Tonic,Beverages
-Vodka Cranberry,Beverages
-Negroni,Beverages
-Caipirinha,Beverages
-Manhattan,Beverages
-Cuba Libre,Beverages
-Irish Coffee,Beverages
-Sangria,Beverages
-Blue Lagoon,Beverages
-Sex on the Beach,Beverages
+Masala Chai,Beverage
+Adrak Chai,Beverage
+Elaichi Chai,Beverage
+Green Tea,Beverage
+Lemon Tea,Beverage
+Black Tea,Beverage
+Kashmiri Kahwa,Beverage
+Filter Coffee,Beverage
+South Indian Coffee,Beverage
+Instant Coffee,Beverage
+Cold Coffee,Beverage
+cold drink,Beverage
+Sweet Lassi,Beverage
+Salted Lassi,Beverage
+Mango Lassi,Beverage
+Chaas,Beverage
+Buttermilk,Beverage
+Sol Kadhi,Beverage
+Jaljeera,Beverage
+Aam Panna,Beverage
+Sugarcane Juice,Beverage
+Nimbu Pani,Beverage
+Shikanji,Beverage
+Bel Sharbat,Beverage
+Rose Sharbat,Beverage
+Thandai,Beverage
+Badam Milk,Beverage
+Kesar Milk,Beverage
+Haldi Doodh,Beverage
+Falooda,Beverage
+Rooh Afza,Beverage
+Sattu Sharbat,Beverage
+Coconut Water,Beverage
+Fruit Juice,Beverage
+Apple Juice,Beverage
+Orange Juice,Beverage
+Pineapple Juice,Beverage
+Watermelon Juice,Beverage
+Mosambi Juice,Beverage
+Sattu Drink,Beverage
+Thandai,Beverage
+Carrot Juice,Beverage
+Mixed Fruit Juice,Beverage
+Energy Drink,Beverage
+Soda,Beverage
+Lemon Soda,Beverage
+Cola,Beverage
+Mojito,Beverage
+Bloody Mary,Beverage
+Screwdriver,Beverage
+Cosmopolitan,Beverage
+Long Island Iced Tea,Beverage
+Margarita,Beverage
+Tequila Sunrise,Beverage
+Whiskey Sour,Beverage
+Old Fashioned,Beverage
+Mai Tai,Beverage
+Mint Julep,Beverage
+Martini,Beverage
+Espresso Martini,Beverage
+Pina Colada,Beverage
+Rum Punch,Beverage
+Gin and Tonic,Beverage
+Vodka Cranberry,Beverage
+Negroni,Beverage
+Caipirinha,Beverage
+Manhattan,Beverage
+Cuba Libre,Beverage
+Irish Coffee,Beverage
+Sangria,Beverage
+Blue Lagoon,Beverage
+Sex on the Beach,Beverage
 Beer, Beverage 
-Pickle,Gourmet
-Ice-Cream,Gourmet
-Icecream,Gourmet 
-Icecream sundae,Gourmet
-Amla Candy,Gourmet
-Chikki,Gourmet
-Gond Ladoo,Gourmet
-Sattu Drink,Gourmet
-Thandai,Gourmet
-Halwa,Gourmet
-Saffron Milk Mix,Gourmet
-Dry Fruit Mix,Gourmet
-Til Ladoo,Gourmet
-Boondi Ladoo,Gourmet
-Sandesh,Gourmet
-Kaju Katli,Gourmet
-Peda,Gourmet
-Rabri,Gourmet
-Kheer,Gourmet
-Sheera,Gourmet
-Seviyan Kheer,Gourmet
-Sooji Halwa,Gourmet
-Besan Ladoo,Gourmet
-Puran Poli,Gourmet
-Lapsi,Gourmet
-Murukku,Gourmet
-Kuzhi Paniyaram,Gourmet
-Modak,Gourmet
-Sundal,Gourmet
-Pithla,Gourmet
-Handvo,Gourmet
-Pongal,Gourmet
-Masala Chai,Gourmet
-Amla Candy,Gourmet
-Chocolate, Gourmet
 Kajal,Beauty and Wellness
 Bindi,Beauty and Wellness
 Sindoor,Beauty and Wellness
@@ -651,7 +710,9 @@ Netflix,Subscription
 Spotify,Subscription  
 Amazon Prime,Subscription  
 Udemy,Subscription  
-Skillshare,Subscription  
+Skillshare,Subscription 
+Gym,Subscription 
+Zee5,Subscription 
 Zoom Pro,Subscription  
 Grammarly,Subscription  
 Headspace,Subscription  
@@ -777,5 +838,6 @@ Chest of Drawers,Furniture
 Folding Table,Furniture
 Plastic Chair,Furniture
 Table,Furniture
+
 
 
