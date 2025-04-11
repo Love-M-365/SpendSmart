@@ -9,6 +9,8 @@ import Register from './components/RegisterPage'
 import Dashboard from './components/Dashboard'
 import BillScanner from './components/BillScanner'
 import AddTransaction from './components/Manual'
+import TransactionHistory from './components/TransactionHistory'
+import BalancePage from './components/BalancePage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +24,8 @@ function App() {
         <Route path='/dashboard' element={<Dashboard></Dashboard>} ></Route>
         <Route path='/scan' element={<BillScanner></BillScanner>} ></Route>
         <Route path='/manual' element={<AddTransaction></AddTransaction>} ></Route>
+        <Route path='/transactions' element={<TransactionHistory></TransactionHistory>} ></Route>
+        <Route path='/balance' element={<BalancePage></BalancePage>} ></Route>
 
       </Routes>
      

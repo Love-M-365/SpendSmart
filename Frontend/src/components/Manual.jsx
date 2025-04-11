@@ -127,13 +127,13 @@ export default function AddTransaction() {
             </div>
             <div className="form-group">
               <label className="form-label">Payment Mode</label>
-              <input
-                type="text"
-                className="form-control"
-                value={paymentMode}
-                onChange={(e) => setPaymentMode(e.target.value)}
-                required
-              />
+             
+              <select name="gender" value={paymentMode} className="form-control" onChange={(e) => setPaymentMode(e.target.value)} required>
+              <option value="">Select mode</option>
+              <option value="Male">Cash</option>
+              <option value="Female">Bank</option>
+             
+            </select>
             </div>
             <div className="form-group">
               <label className="form-label">Contributors</label>

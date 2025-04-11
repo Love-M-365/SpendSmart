@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useEffect } from 'react';
 import logo from '../assets/spend-nobg.png'
-import bg from '../assets/spendsmart.png'
+import bg from '../assets/bg.jpg'
 import about from '../assets/istockphoto-1342226806-612x612.jpg'
 import bills from '../assets/bills.jpg'
 import {Link} from 'react-router-dom'
@@ -15,7 +15,7 @@ const HomePage = () => {
     <>
       <nav
         id="navbar-example"
-        className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm px-4"
+        className="navbar navbar-expand-lg custom-navbar sticky-top" 
       >
         <a className="navbar-brand fw-bold" href="#">
         <img src={logo} style={{height:"3rem", width:"3rem"}} alt="logo" />
@@ -34,22 +34,22 @@ const HomePage = () => {
         <div className="collapse navbar-collapse" id="navbarTabs">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" href="#section1">
+              <a className="nav-link text-white active" href="#section1">
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#section2">
+              <a className="nav-link text-white" href="#section2">
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#section3">
+              <a className="nav-link text-white" href="#section3">
                 Features
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#section4">
+              <a className="nav-link text-white" href="#section4">
                 Contact
               </a>
             </li>
@@ -74,10 +74,10 @@ const HomePage = () => {
         <section
           id="section1"
           className="vh-100 d-flex flex-column   border-bottom "
-          style={{backgroundImage: `url(${bg})`,backgroundPosition:"center",backgroundSize:"cover",color:"white",marginTop:"3rem",borderRadius:"1rem"}}
+          style={{backgroundImage: `url(${bg})`,backgroundPosition:"center",backgroundSize:"cover",color:"white",borderRadius:"1rem", margin:"1rem",padding:"2rem"}}
         >
-          <h2 className="display-4 fw-bold m-3">Welcome to </h2><h1 style={{fontFamily:"Bungee spice",fontSize:"4rem"}}>SpendSmart</h1>
-          <p className="lead  w-75" style={{fontFamily:"Montserrat",marginLeft:"10rem"}}>
+          <h2 className="display-4 fw-bold m-3" style={{color:"black"}}>Welcome to </h2><h1 style={{fontFamily:"Gravitas One",fontSize:"4rem",color:"green",marginLeft:"9rem"}}>SpendSmart</h1>
+          <p className="lead  w-75" style={{fontFamily:"Montserrat",marginLeft:"20rem"}}>
             The Financial Wingman</p>
           
             <img className="m-3"src={logo}style={{height:"15rem",width:"15rem"}}></img>
