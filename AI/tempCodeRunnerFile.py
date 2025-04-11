@@ -9,8 +9,8 @@ item_to_category = dict(zip(df['Item'].str.lower(), df['Category']))
 
 # Function to categorize item
 def preprocess_item(item):
-    # Common descriptors to remove"
-    remove_words = ["veg", "non-veg","non veg", "spicy", "fried", "grilled","chilled", "Hot" ]
+    # Common descriptors to remove
+    remove_words = ["veg", "non-veg", "spicy", "fried", "grilled"]
     item = item.lower()
     for word in remove_words:
         item = item.replace(word, "")
@@ -37,7 +37,7 @@ def categorize_item(item):
 
 
 # Test items
-test_items = ["rajma chawal","fruit chill","chocolate","t-shirt","jhumke","chilled beer","spicy noodles"," hot and sour soup", "veg manchurian"]
+test_items = ["roll", "Biryani","veg spring roll ", "cheesy twisted potatoes", "auto","hostel accomodation", "toothbrush", "shaving cream"]
 
 for item in test_items:
     print(f"{item} → {categorize_item(item)}")
