@@ -37,7 +37,7 @@ def categorize_item(item):
 
 
 # Test items
-test_items = ["rajma chawal","fruit chill","chocolate","t-shirt","jhumke","chilled beer","spicy noodles"," hot and sour soup", "veg manchurian"]
+test_items = ["rajma chawal","fruit chill","chocolate","t-shirt","plain papad","chilled beer","spicy noodles","Amul Cheese"]
 
 for item in test_items:
     print(f"{item} → {categorize_item(item)}")

@@ -209,6 +209,8 @@ Cake,Food
 Butter Chicken,Food 
 Soya Chaap,Food 
 Spring Roll,Food  
+Chicken kebab,Food
+Kebab,Food
 Momos,Food 
 Pizza,Food 
 Chilli Paneer,Food
@@ -227,6 +229,7 @@ Dhokla,Food
 Khandvi,Food
 Thepla,Food
 Baingan Bharta,Food
+Chips,Food
 Sarson da Saag,Food
 Makki di Roti,Food
 Kadhi Chawal,Food
@@ -368,6 +371,7 @@ Garlic Naan,Food
 Butter Naan,Food
 Rava Dosa,Food
 Onion Dosa,Food
+Papad,Food
 Ice-Cream,Food
 Icecream,Food 
 Icecream sundae,Food
@@ -378,6 +382,7 @@ Dry Fruit Mix,Food
 Til Ladoo,Food
 Boondi Ladoo,Food
 Sandesh,Food
+Fruit Chill,Food
 Kaju Katli,Food
 Peda,Food
 Rabri,Food
@@ -397,8 +402,9 @@ Bhature,Food
 Shake,Beverage 
 Coke,Beverage 
 Pepsi,Beverage 
+Energy Drink,Beverage
 Miranda,Beverage 
-Fanta,Beverage 
+Fanta Orange,Beverage 
 Rasna,Beverage 
 Tang,Beverage 
 GluconD,Beverage 
@@ -524,6 +530,7 @@ Talcum Powder,Daily Need
 Herbal Shampoo,Daily Need
 Henna Powder,Daily Need
 Toothpaste,Beauty and Wellness   
+Paste,Daily Need
 Toothbrush,Beauty and Wellness   
 Mouthwash,Beauty and Wellness   
 Neem Oil,Daily Need
@@ -753,7 +760,30 @@ Electric Kettle,Electronics
 Electric Iron,Electronics    
 Induction Cooktop,Electronics    
 Microwave Oven,Electronics    
-Toaster,Electronics    
+Toaster,Electronics 
+Apple (iPhone),Electronics
+Samsung,Electronics
+OnePlus,Electronics
+Poco,Electronics
+Redmi,Electronics
+Mi,Electronics
+Xiaomi,Electronics
+Realme,Electronics
+Oppo,Electronics
+Vivo,Electronics
+Motorola,Electronics
+Nokia,Electronics
+Google (Pixel),Electronics
+Sony Xperia,Electronics
+Infinix,Electronics
+Tecno,Electronics
+Asus,Electronics
+Lava,Electronics
+Micromax,Electronics
+iQOO,Electronics
+Honor,Electronics
+Nothing,Electronics
+Lenovo,Electronics
 Grill,Electronics    
 Sandwich Maker,Electronics    
 Rice Cooker,Electronics    
