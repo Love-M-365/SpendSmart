@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
 
+import { useNavigate } from 'react-router-dom';
 export default function AddTransaction() {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -11,26 +12,47 @@ export default function AddTransaction() {
   const [paymentTo, setPaymentTo] = useState('');
   const [userId, setUserId] = useState(localStorage.getItem('userId') || '');
   const [transactionId, setTransactionId] = useState('');
+  const [selected, setSelected] = useState(null);
+const navigate = useNavigate();
+const categories = [
+  { id: 'garments', label: 'Garments', icon: '👕' },
+  { id: 'dairy', label: 'Dairy', icon: '🧀' },
+  { id: 'groceries', label: 'Groceries', icon: '🥡' },
+  { id: 'food', label: 'Food', icon: '🍜' },
+  { id: 'beverage', label: 'Beverage', icon: '🍷' },
+  { id: 'dailyneed', label: 'Daily Need', icon: '🪥' },
+  { id: 'beautywellness', label: 'Beauty and Wellness', icon: '❣' },
+  { id: 'stationary', label: 'Stationary', icon: '📚' },
+  { id: 'vegetable', label: 'Vegetable', icon: '🍄‍🟫' },
+  { id: 'fruits', label: 'Fruits', icon: '🍓' },
+  { id: 'travel', label: 'Travel', icon: '🛺' },
+  { id: 'rent', label: 'Rent', icon: '🏚' },
+  { id: 'subscription', label: 'Subscription', icon: '👑' },
+  { id: 'electronics', label: 'Electronics', icon: '📱' },
+  { id: 'furniture', label: 'Furniture', icon: '🛌🏼' },
+  { id: 'allowance', label: 'Allowance', icon: '💰' },
+  { id: 'salary', label: 'Salary', icon: '💳' },
+  { id: 'profit', label: 'Profit', icon: '💹' },
+  { id: 'other', label: 'Other', icon: '🪙' }
+];
 
-  // Generate unique transaction ID
-  const generateTransactionId = () => {
+  useEffect(() => {
     const id = 'TXN-' + Math.floor(Math.random() * 1000000);
     setTransactionId(id);
-  };
+  }, []);
 
-  // Handle contributors input
   const handleContributorsChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     if (value && !contributors.includes(value)) {
       setContributors([...contributors, value]);
     }
+    e.target.value = '';
   };
 
   const handleRemoveContributor = (contributor) => {
     setContributors(contributors.filter(item => item !== contributor));
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,135 +67,99 @@ export default function AddTransaction() {
       paymentTo,
     };
 
-    try {
-      const response = await axios.post('/api/transactions', transactionData);
-      alert('Transaction added successfully!');
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error adding transaction:', error);
-      alert('Failed to add transaction!');
-    }
+    navigate('/confirm', {
+      state: {
+        transaction: {
+          title,
+          amount,
+          type: 'expense', 
+          category,
+          paymentMode,
+          paymentTo,
+          contributors,
+          transactionId,
+        },
+      },
+    });
+    
   };
-
-  // Generate transaction ID when the component loads
-  React.useEffect(() => {
-    generateTransactionId();
-  }, []);
 
   return (
     <>
-    <Navbar></Navbar>
-    <div className="container " style={{marginTop:"5rem"}}>
-      <h2 className="mb-4 text-center">Add a Transaction</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="row">
-          {/* Left Column */}
-          <div className="col-md-6 mb-3">
-            {/* Title */}
-            <div className="form-group">
-              <label className="form-label">Title of Expense</label>
-              <input
-                type="text"
-                className="form-control"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-                placeholder="Enter expense title"
-              />
-            </div>
+      <Navbar />
+      <div className="form-container" style={{marginTop:"6rem"}}>
+        <h2>Add New Transaction</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
 
-            {/* Category */}
-            <div className="form-group">
-              <label className="form-label">Category</label>
-              <input
-                type="text"
-                className="form-control"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                required
-                placeholder="Enter category"
-              />
-            </div>
+          <input
+            type="number"
+            placeholder="Amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            required
+          />
 
-            {/* Amount */}
-            <div className="form-group">
-              <label className="form-label">Amount</label>
-              <input
-                type="number"
-                className="form-control"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                required
-                placeholder="Enter amount"
-              />
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="col-md-6 mb-3">
-            {/* Payment To */}
-            <div className="form-group">
-              <label className="form-label">Payment To</label>
-              <input
-                type="text"
-                className="form-control"
-                value={paymentTo}
-                onChange={(e) => setPaymentTo(e.target.value)}
-                required
-                placeholder="Enter payment recipient"
-              />
-            </div>
-
-            {/* Payment Mode */}
-            <div className="form-group">
-              <label className="form-label">Payment Mode</label>
-              <select
-                value={paymentMode}
-                className="form-control"
-                onChange={(e) => setPaymentMode(e.target.value)}
-                required
+          <div className="category-grid">
+            {categories.map((cat) => (
+              <div
+                key={cat.id}
+                className={`category-card ${selected === cat.id ? 'selected' : ''}`}
+                
+                onClick={() => {
+                  setSelected(cat.id);
+                  setCategory(cat.label);
+                }}
               >
-                <option value="">Select mode</option>
-                <option value="Cash">Cash</option>
-                <option value="Bank">Bank</option>
-              </select>
-            </div>
-
-            {/* Contributors */}
-            <div className="form-group">
-              <label className="form-label">Contributors</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter contributor"
-                onBlur={handleContributorsChange}
-              />
-              <ul className="list-unstyled mt-2">
-                {contributors.map((contributor, index) => (
-                  <li key={index} className="d-flex justify-content-between align-items-center">
-                    {contributor}
-                    <button
-                      type="button"
-                      className="btn btn-danger btn-sm"
-                      onClick={() => handleRemoveContributor(contributor)}
-                    >
-                      Remove
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Submit Button */}
-            <div className="text-center">
-              <button type="submit" className="btn btn-primary w-50">
-                Add Transaction
-              </button>
-            </div>
+                <span className="icon">{cat.icon}</span>
+                <span className="label">{cat.label}</span>
+              </div>
+            ))}
           </div>
-        </div>
-      </form>
-    </div>
+
+          <input
+            type="text"
+            placeholder="Contributor (press Enter to add)"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleContributorsChange(e);
+              }
+            }}
+          />
+          <div className="contributor-list">
+            {contributors.map((contributor) => (
+              <span key={contributor} className="contributor-tag">
+                {contributor}
+                <button type="button" onClick={() => handleRemoveContributor(contributor)}>×</button>
+              </span>
+            ))}
+          </div>
+
+          <input
+            type="text"
+            placeholder="Payment To"
+            value={paymentTo}
+            onChange={(e) => setPaymentTo(e.target.value)}
+          />
+
+          <select value={paymentMode} onChange={(e) => setPaymentMode(e.target.value)} required>
+            <option value="">Select Payment Mode</option>
+            <option value="cash">Cash</option>
+            <option value="upi">UPI</option>
+            <option value="card">Card</option>
+            <option value="other">Other</option>
+          </select>
+
+          <button type="submit" className="submit-btn">Add Transaction</button>
+        </form>
+      </div>
     </>
   );
 }

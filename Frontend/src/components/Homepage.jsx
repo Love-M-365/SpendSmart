@@ -6,6 +6,9 @@ import bg from '../assets/bg.jpg'
 import about from '../assets/istockphoto-1342226806-612x612.jpg'
 import bills from '../assets/bills.jpg'
 import {Link} from 'react-router-dom'
+import ai from '../assets/aic.jpeg'
+import piechrt from '../assets/piechart.jpeg'
+import billsplit from '../assets/billsplit.jpeg'
 const HomePage = () => {
   useEffect(() => {
     // ScrollSpy will auto-activate with the correct HTML attributes, no manual init needed
@@ -76,7 +79,7 @@ const HomePage = () => {
           className="vh-100 d-flex flex-column   border-bottom "
           style={{backgroundImage: `url(${bg})`,backgroundPosition:"center",backgroundSize:"cover",color:"white",borderRadius:"1rem", margin:"1rem",padding:"2rem"}}
         >
-          <h2 className="display-4 fw-bold m-3" style={{color:"black"}}>Welcome to </h2><h1 style={{fontFamily:"Gravitas One",fontSize:"4rem",color:"green",marginLeft:"9rem"}}>SpendSmart</h1>
+          <h2 className="display-4 fw-bol" style={{color:"black",marginRight:"40rem"}}>Welcome to </h2><h1 style={{fontFamily:"Gravitas One",fontSize:"4rem",color:"green",marginLeft:"9rem"}}>SpendSmart</h1>
           <p className="lead  w-75" style={{fontFamily:"Montserrat",marginLeft:"20rem"}}>
             The Financial Wingman</p>
           
@@ -114,31 +117,31 @@ const HomePage = () => {
     <h2 className="fw-bold text-center mb-5">Features</h2>
     <div className="row">
       <div className="col-md-6 d-flex mb-4">
-        <img src={bills} className="me-3" alt="Feature 1" style={{ height: '5rem' }} />
+        <img src={bills} className="me-3" alt="Feature 1" style={{ height: '5rem',width:"5rem" }} />
         <div>
           <h5 className="fw-bold">Just scan, and we’ll handle the rest.</h5>
           <p className="text-muted mb-0">No more manual entries! With Spend Smart’s Bill Scan & Track feature, simply upload or snap a photo of your bills and receipts — our smart scanner will automatically extract the important details like amount, category, and date, and instantly add it to your expense list.</p>
         </div>
       </div>
       <div className="col-md-6 d-flex mb-4">
-        <img src={logo} className="me-3" alt="Feature 2" style={{ height: '60px' }} />
+        <img src={billsplit} className="me-3" alt="Feature 2" style={{ height: '5rem',width:"5rem" }} />
         <div>
-          <h5 className="fw-bold">Navbar Updates on Scroll</h5>
-          <p className="text-muted mb-0">Dynamic navbar highlights the current section in view.</p>
+          <h5 className="fw-bold">Effortless Bill Splitting</h5>
+          <p className="text-muted mb-0">Streamline the process of dividing expenses among friends. Simply input your bills, and the system automatically calculates and distributes the amounts to each individual, eliminating manual calculations and ensuring accuracy.</p>
         </div>
       </div>
       <div className="col-md-6 d-flex mb-4">
-        <img src={logo} className="me-3" alt="Feature 3" style={{ height: '60px' }} />
+        <img src={ai} className="me-3" alt="Feature 3" style={{ height: '5rem',width:"5rem" }} />
         <div>
-          <h5 className="fw-bold">Bootstrap-Powered Design</h5>
-          <p className="text-muted mb-0">Clean, responsive layout using Bootstrap's components and grid.</p>
+          <h5 className="fw-bold">AI-Powered Categorization</h5>
+          <p className="text-muted mb-0">Automatically organize scanned bill items into clear categories. This intelligent segregation provides detailed insights into spending patterns, empowering users with a comprehensive overview of their financial allocations.</p>
         </div>
       </div>
       <div className="col-md-6 d-flex mb-4">
-        <img src={logo} className="me-3" alt="Feature 4" style={{ height: '60px' }} />
+        <img src={piechrt} className="me-3" alt="Feature 4" style={{ height: '5rem',width:"5rem" }} />
         <div>
-          <h5 className="fw-bold">Fully Responsive Layout</h5>
-          <p className="text-muted mb-0">Optimized for all screen sizes — mobile, tablet, and desktop.</p>
+          <h5 className="fw-bold">Interactive Pie Chart Visualization</h5>
+          <p className="text-muted mb-0">Gain a clear, visual representation of monthly expenses through an intuitive pie chart. This feature helps users track spending across categories, identify areas for optimization, and make informed financial decisions</p>
         </div>
       </div>
     </div>
@@ -151,10 +154,7 @@ const HomePage = () => {
           className="vh-100 d-flex flex-column justify-content-center align-items-center bg-white"
         >
           <h2 className="fw-bold">Contact Us</h2>
-          <p className="text-center text-muted w-75">
-            Have questions or want to collaborate? Drop us a message at{' '}
-            <a href="mailto:info@myapp.com">info@myapp.com</a>.
-          </p>
+          
         </section>
       </div>
     </>

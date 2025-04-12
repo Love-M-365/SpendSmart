@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
+import register from '../assets/register.jpeg'
 export default function Register() {
   const [form, setForm] = useState({
     name: '', age: '', phone: '', upiId: '', email: '',
@@ -8,7 +9,7 @@ export default function Register() {
   });
 
   const [message, setMessage] = useState('');
-
+  const navigate=useNavigate();
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
@@ -19,6 +20,11 @@ export default function Register() {
     try {
       const res = await axios.post('http://localhost:5000/api/auth/register', form);
       setMessage(res.data.message);
+      navigate('/dashboard')
+      const { token, user } = res.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('userId', user._id);
+      
     } catch (err) {
       setMessage(err.response?.data?.message || "Registration failed");
     }
@@ -30,7 +36,7 @@ export default function Register() {
         <div className="row g-0">
           <div className="col-md-5 d-none d-md-block">
             <img
-              src="https://source.unsplash.com/featured/?register,people"
+              src={register}
               alt="Register visual"
               className="img-fluid h-100 rounded-start"
               style={{ objectFit: 'cover' }}

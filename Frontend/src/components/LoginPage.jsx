@@ -22,11 +22,16 @@ export default function Login() {
       const res = await axios.post('http://localhost:5000/api/auth/login', form);
       setMessage('Login successful');
       navigate('/dashboard');
+      console.log(res);
+      const { token, user } = res.data;
+localStorage.setItem('token', token);
+localStorage.setItem('userId', user._id);
+
     } catch (err) {
       setMessage(err.response?.data?.message || 'Login failed');
     }
   };
-
+  
   return (
     <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
       <div className="row shadow rounded overflow-hidden w-100" style={{ maxWidth: '900px' }}>

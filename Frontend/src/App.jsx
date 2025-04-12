@@ -12,6 +12,7 @@ import AddTransaction from './components/Manual'
 import TransactionHistory from './components/TransactionHistory'
 import BalancePage from './components/BalancePage'
 import AddMoneyTransaction from './components/AddMoney'
+import ConfirmTransaction from './components/Confirm'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,6 +29,7 @@ function App() {
         <Route path='/transactions' element={<TransactionHistory></TransactionHistory>} ></Route>
         <Route path='/balance' element={<BalancePage></BalancePage>} ></Route>
         <Route path='/addmoney' element={<AddMoneyTransaction></AddMoneyTransaction>} ></Route>
+        <Route path='/confirm' element={<ConfirmTransaction></ConfirmTransaction>} ></Route>
 
       </Routes>
      

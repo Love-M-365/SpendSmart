@@ -1,20 +1,69 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef ,useEffect } from 'react';
 import Navbar from './Navbar';
-
+import { useNavigate } from 'react-router-dom';
 const BillScanner = () => {
   const [extractedText, setExtractedText] = useState('');
   const [totalAmount, setTotalAmount] = useState('');
   const [category, setCategory] = useState('');
+  const [title, setTitle] = useState('scanned bill');
+ 
+  const [contributors, setContributors] = useState([]);
+  const [paymentMode, setPaymentMode] = useState('');
+  const [userId, setUserId] = useState(localStorage.getItem('userId') || '');
+  const [transactionId, setTransactionId] = useState('');
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-
+  const navigate=useNavigate();
   const handleUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       recognizeTextFromFile(file);
     }
   };
+  
+  const handleContributorsChange = (e) => {
+    const value = e.target.value.trim();
+    if (value && !contributors.includes(value)) {
+      setContributors([...contributors, value]);
+    }
+    e.target.value = '';
+  };
 
+  const handleRemoveContributor = (contributor) => {
+    setContributors(contributors.filter(item => item !== contributor));
+  };
+ useEffect(() => {
+    const id = 'TXN-' + Math.floor(Math.random() * 1000000);
+    setTransactionId(id);
+  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+
+    const transactionData = {
+      transactionId,
+      userId,
+      contributors,
+      paymentMode,
+     
+    };
+
+    navigate('/confirm', {
+      state: {
+        transaction: {
+          title,
+          amount:totalAmount,
+          type: 'expense', 
+          category:category,
+          paymentMode,
+          paymentTo:"unknown",
+          contributors,
+          transactionId,
+        },
+      },
+    });
+    
+  };
   const handleCameraClick = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -42,26 +91,34 @@ const BillScanner = () => {
   const recognizeTextFromFile = async (file) => {
     const formData = new FormData();
     formData.append('image', file);
-
+  
     try {
       const response = await fetch('http://localhost:5000/api/ocr', {
         method: 'POST',
         body: formData,
       });
-
+  
       const result = await response.json();
       console.log('Server OCR Result:', result);
-
+  
       setExtractedText(result.text);
       setTotalAmount(result.amount);
-      setCategory(result.category);
-
-      sendToBackend(result.amount, result.category);
+  
+      // Predict category from text
+      const categoryRes = await fetch('http://127.0.0.1:5001/predict-category', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: result.text }),
+      });
+  
+      const categoryData = await categoryRes.json();
+      setCategory(categoryData.category);
+  
     } catch (error) {
-      console.error('Error sending image to backend:', error);
+      console.error('Error sending image or text to backend:', error);
     }
   };
-
+  
   const extractTotal = (text) => {
     const lines = text.split('\n');
     let totalAmount = '';
@@ -92,28 +149,6 @@ const BillScanner = () => {
     return totalAmount || fallbackAmount || '';
   };
 
-  const sendToBackend = async (amount, category) => {
-    const data = {
-      amount,
-      category,
-    };
-
-    console.log('Sending to backend:', data);
-
-    try {
-      const response = await fetch('/api/transactions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      console.log('Server response:', result);
-    } catch (err) {
-      console.error('Failed to send data:', err);
-    }
-  };
 
   return (
     <>
@@ -179,7 +214,35 @@ const BillScanner = () => {
             <h6>Total Amount: <span className="text-success">₹{totalAmount}</span></h6>
             <h6>Category: <span className="text-info">{category}</span></h6>
           </div>
+         
         </div>
+        <select value={paymentMode} className="form-label" onChange={(e) => setPaymentMode(e.target.value)} required>
+            <option value="">Select Payment Mode</option>
+            <option value="cash">Cash</option>
+            <option value="upi">UPI</option>
+            <option value="card">Card</option>
+            <option value="other">Other</option>
+          </select>
+          <input
+            className='form-control'
+            type="text"
+            placeholder="Contributor (press Enter to add)"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleContributorsChange(e);
+              }
+            }}
+          />
+          <div className="contributor-list">
+            {contributors.map((contributor) => (
+              <span key={contributor} className="contributor-tag">
+                {contributor}
+                <button type="button" onClick={() => handleRemoveContributor(contributor)}>×</button>
+              </span>
+            ))}
+          </div>
+          <button type="submit" className="btn btn-success" onClick={handleSubmit}>Add Transaction</button>
       </div>
     </>
   );

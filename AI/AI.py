@@ -2,7 +2,7 @@ from fuzzywuzzy import process, fuzz
 import pandas as pd
 
 # Load dataset
-df = pd.read_csv("C:\\Users\\Dakshyani Murari\\OneDrive\\Desktop\\spend smart GIT\\SpendSmart\\AI\\DataSet.csv")
+df = pd.read_csv("C:\\Users\\devma\\OneDrive\\Documents\\Desktop\\SpendSmart\\SpendSmart\\AI\\DataSet.csv")
 
 # Create lowercase mapping
 item_to_category = dict(zip(df['Item'].str.lower(), df['Category']))
@@ -88,23 +88,34 @@ def categorize_item(item):
     if item_cleaned in item_to_category:
         return item_to_category[item_cleaned]
 
-    # 2. Fuzzy match
+    # 2. Fuzzy match on full item
     match, score = process.extractOne(
         item_cleaned,
         item_to_category.keys(),
         scorer=fuzz.token_sort_ratio
     )
-
     if score > 80:
         return item_to_category[match]
-    else:
-        return "Miscellaneous"
+
+    # 3. Word-by-word match
+    for word in item_cleaned.split():
+        match, score = process.extractOne(
+            word,
+            item_to_category.keys(),
+            scorer=fuzz.token_sort_ratio
+        )
+        if score > 85:
+            return item_to_category[match]
+
+    # 4. Fallback
+    return "Miscellaneous"
+
 
 
 # Test items
 test_items = [
-    "rajma chawal", "fruit chill", "chocolate", "t-shirt", "plain papad",
-    "chilled beer", "spicy noodles", "Amul Cheese", "Nestle Milk", "lays chips",
+    "rajma chawal", "fruit chill", "i love chocolate", "t-shirt", "plain papad",
+    "chilled beer 01 299 ", "spicy noodles", "Amul Cheese", "Nestle Milk", "lays chips",
     "Dairy Milk Silk", "Red Bull Energy Drink", "Ariel Detergent", "Fanta Orange",
     "Maggi Noodles", "Patanjali Ghee", "Tata Tea Gold", "Colgate Paste" ,"Butter Scotch Ice-cream"
 ]
