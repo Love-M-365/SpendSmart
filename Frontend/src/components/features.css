@@ -1,0 +1,40 @@
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.55); /* Semi-transparent black */
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.carousel-caption h5 {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  color: #f0f0f0;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .carousel-caption {
+    padding: 10px;
+  }
+
+  .carousel-caption h5 {
+    font-size: 1.2rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.9rem;
+  }
+}
+.carousel-item img {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.02);
+}

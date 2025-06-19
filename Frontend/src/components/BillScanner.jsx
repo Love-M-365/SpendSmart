@@ -1,44 +1,79 @@
 import React, { useState, useRef ,useEffect } from 'react';
 import Navbar from './Navbar';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Select from 'react-select';
 const BillScanner = () => {
   const [extractedText, setExtractedText] = useState('');
+  
   const [totalAmount, setTotalAmount] = useState('');
   const [category, setCategory] = useState('');
   const [title, setTitle] = useState('scanned bill');
+  const [friends, setFriends] = useState([]);
+    const [selectedContributors, setSelectedContributors] = useState([]);
  
   const [contributors, setContributors] = useState([]);
   const [paymentMode, setPaymentMode] = useState('');
+  const [amount, setAmount] = useState('');
   const [userId, setUserId] = useState(localStorage.getItem('userId') || '');
   const [transactionId, setTransactionId] = useState('');
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const navigate=useNavigate();
+  const options = friends.map(friend => ({
+    value: friend._id,
+    label: friend.name,
+  }));
+  
+  const handleChange = (selectedOptions) => {
+    setSelectedContributors(selectedOptions || []);
+  };
+
   const handleUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       recognizeTextFromFile(file);
     }
   };
-  
-  const handleContributorsChange = (e) => {
-    const value = e.target.value.trim();
-    if (value && !contributors.includes(value)) {
-      setContributors([...contributors, value]);
+ 
+ 
+ 
+  useEffect(() => {
+    const id = 'TXN-' + Math.floor(Math.random() * 1000000);
+    setTransactionId(id);
+
+    // Fetch friends list
+    axios.get(`http://localhost:5000/api/users/${userId}/friends`)
+      .then(res => {
+        setFriends(res.data); // Assuming this response contains the friends list
+      })
+      .catch(err => {
+        console.error('Failed to fetch friends:', err);
+      });
+  }, [userId]);
+
+  const handleContributorSelection = (friendId) => {
+    if (!selectedContributors.includes(friendId)) {
+      setSelectedContributors([...selectedContributors, friendId]);
     }
-    e.target.value = '';
   };
 
-  const handleRemoveContributor = (contributor) => {
-    setContributors(contributors.filter(item => item !== contributor));
+  const handleRemoveContributor = (friendId) => {
+    setSelectedContributors(selectedContributors.filter(id => id !== friendId));
   };
+
+ 
  useEffect(() => {
     const id = 'TXN-' + Math.floor(Math.random() * 1000000);
     setTransactionId(id);
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const dividedAmount = selectedContributors.length > 0 
+    ? totalAmount / (selectedContributors.length + 1)
+    : 0;
+  
+  
 
     const transactionData = {
       transactionId,
@@ -52,12 +87,12 @@ const BillScanner = () => {
       state: {
         transaction: {
           title,
-          amount:totalAmount,
+          amount: dividedAmount > 0 ? dividedAmount : totalAmount,
           type: 'expense', 
           category:category,
           paymentMode,
           paymentTo:"unknown",
-          contributors,
+          contributors:selectedContributors,
           transactionId,
         },
       },
@@ -223,25 +258,19 @@ const BillScanner = () => {
             <option value="card">Card</option>
             <option value="other">Other</option>
           </select>
-          <input
-            className='form-control'
-            type="text"
-            placeholder="Contributor (press Enter to add)"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault();
-                handleContributorsChange(e);
-              }
-            }}
-          />
-          <div className="contributor-list">
-            {contributors.map((contributor) => (
-              <span key={contributor} className="contributor-tag">
-                {contributor}
-                <button type="button" onClick={() => handleRemoveContributor(contributor)}>×</button>
-              </span>
-            ))}
-          </div>
+          <div className="container mt-3">
+      <label className="form-label">Select Contributors</label>
+      <Select
+        isMulti
+        options={options}
+        value={selectedContributors}
+        onChange={handleChange}
+        className="mb-3"
+      />
+
+      
+    </div>
+
           <button type="submit" className="btn btn-success" onClick={handleSubmit}>Add Transaction</button>
       </div>
     </>

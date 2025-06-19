@@ -1,0 +1,21 @@
+.user-card {
+  border: none;
+  border-radius: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.user-card:hover {
+  transform: translateY(-4px);
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  background-color: #0d6efd;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

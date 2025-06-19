@@ -40,7 +40,7 @@ export default function ConfirmTransaction() {
           <h2 className="text-center mb-4">Confirm Your Transaction</h2>
           <div className="row mb-3">
             <div className="col"><strong>Title:</strong> {transactionData.title}</div>
-            <div className="col"><strong>Amount:</strong> ₹{transactionData.amount}</div>
+            <div className="col"><strong>Amount:</strong> ₹{Math.abs(transactionData.amount).toFixed(2)}</div>
           </div>
           <div className="row mb-3">
             <div className="col"><strong>Type:</strong> {transactionData.type}</div>

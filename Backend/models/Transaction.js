@@ -11,7 +11,13 @@ const transactionSchema = new mongoose.Schema({
   category: { type: String, required: true },
   amount: { type: Number, required: true }, 
   type: { type: String, enum: ['income', 'expense'], required: true },
-  contributors: [{ type: String }],
+  contributors: [
+    {
+      user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+      share: Number,
+      paid: { type: Boolean, default: false }
+    }
+  ],
   paymentMode: { type: String, required: true },
   paymentTo: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }

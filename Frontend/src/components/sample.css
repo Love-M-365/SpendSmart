@@ -1,0 +1,28 @@
+.step-card {
+    background: #ffffffcc;
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px;
+    margin-right: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .step-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #005A9C, #87CEFA);
+    
+    font-size: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  

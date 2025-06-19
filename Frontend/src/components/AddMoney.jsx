@@ -39,7 +39,7 @@ export default function AddMoney() {
             category : 'credits',
             paymentMode,
             paymentTo:'me',
-            contributors:['me'],
+            contributors:[],
             transactionId,
           },
         },

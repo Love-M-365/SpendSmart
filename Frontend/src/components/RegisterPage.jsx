@@ -31,8 +31,8 @@ export default function Register() {
   };
 
   return (
-    <div className="container d-flex align-items-center justify-content-center min-vh-100">
-      <div className="card shadow p-4" style={{ maxWidth: '1100px', width: '100%' }}>
+    <div className="container d-flex align-items-center justify-content-center min-vh-100 ">
+      <div className="card shadow p-4 bg-light" style={{ maxWidth: '1100px', width: '100%' }}>
         <div className="row g-0">
           <div className="col-md-5 d-none d-md-block">
             <img
@@ -42,47 +42,52 @@ export default function Register() {
               style={{ objectFit: 'cover' }}
             />
           </div>
-          <div className="col-md-7 p-4">
-            <h3 className="text-center mb-4">Create an Account</h3>
+          <div className="col-md-7 ">
+          
             {message && <div className="alert alert-info">{message}</div>}
-            <form onSubmit={handleSubmit}>
-              <div className="row">
-                <div className="col-md-6 mb-3">
-                  <input name="name" className="form-control" placeholder="Full Name" onChange={handleChange} required />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <input name="age" className="form-control" placeholder="Age" type="number" onChange={handleChange} required />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <input name="phone" className="form-control" placeholder="Phone Number" onChange={handleChange} required />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <input name="upiId" className="form-control" placeholder="UPI ID" onChange={handleChange} required />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <input name="email" className="form-control" placeholder="Email ID" type="email" onChange={handleChange} required />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <input name="profession" className="form-control" placeholder="Profession" onChange={handleChange} required />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <input name="password" className="form-control" placeholder="Password" type="password" onChange={handleChange} required />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <input name="confirmPassword" className="form-control" placeholder="Confirm Password" type="password" onChange={handleChange} required />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <select name="gender" className="form-control" onChange={handleChange} required>
-                    <option value="">Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-              <button className="btn btn-success w-100 mt-3">Register</button>
-            </form>
+             <form onSubmit={handleSubmit} className ="form">
+    
+    
+
+    <div className="container">
+      <h3>
+        Create an account
+    </h3>
+      <div className="row mb-3">
+         <div className="col-md-6"><input type="text" placeholder="Full Name" name="name"  onChange={handleChange} required/></div>
+         <div className="col-md-6"> <input type="number" placeholder="Age" name="age"  onChange={handleChange} required/></div>
+   
+      </div>
+      <div className="row mb-3">
+         <div className="col-md-6"><input type="number" placeholder="Phone Number" name="phone"  onChange={handleChange} required/></div>
+         <div className="col-md-6"> <input type="text" placeholder=" UPI ID" name="upiId"  onChange={handleChange} required/></div>
+   
+      </div>
+      <div className="row mb-3">
+         <div className="col-md-6">
+          <select  name='gender' onChange={handleChange} required>
+            <option selected>Gender</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="prefernottosay">Prefer not to say</option>
+          </select>
+         </div>
+         <div className="col-md-6"> <input type="text" placeholder="Profession" name="profession" onChange={handleChange} required/></div>
+   
+      </div>
+    
+    <input type="email" placeholder="Email" name="email"  onChange={handleChange} required/>
+     <input type="password" placeholder="Password" name="password"  onChange={handleChange} required/>
+     <input type="password" placeholder="Confirm Password" onChange={handleChange} name="confirmPassword"/>
+     </div>
+    <button className="oauthButton">
+                    Continue
+                    <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 17 5-5-5-5"></path><path d="m13 17 5-5-5-5"></path></svg>
+                </button>
+                
+</form>
           </div>
+          
         </div>
       </div>
     </div>
