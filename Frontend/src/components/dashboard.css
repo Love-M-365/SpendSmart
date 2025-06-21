@@ -122,9 +122,113 @@
   color: #06f;
   fill: #06f;
 }
-
-@media (min-width: 768px) {
-  .button-59 {
-    min-width: 170px;
+@media (max-width: 768px) {
+   .display-heading {
+    font-size: 2.5rem;
+    margin-top: 2rem;
   }
+
+  .lead {
+    font-size: 1rem;
+  }
+  .dashboard-container {
+    padding: 1rem !important;
+  }
+
+  .top-buttons {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .balance-cards {
+    flex-direction: column !important;
+  }
+
+  .chart-wrapper {
+    width: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  .filter-buttons {
+    flex-direction: column !important;
+  }
+
+  .transactions-list li {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .transactions-list span {
+    margin-top: 0.5rem;
+  }
+
+  .dark-mode-toggle {
+    margin-top: 1rem !important;
+  }
+}
+
+
+.button-68 {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #27ae60;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 13px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-68:hover {
+  background-color: #1e8449;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.button-68:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.button-68:hover {
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+
+.transaction-card {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.transaction-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.display-heading {
+  font-family: "Zen Tokyo Zoo", cursive;
+  font-size: 9rem;
+  margin-top: 3rem;
+  align-items: left;
+  justify-content: center;
+  text-align: left;
 }

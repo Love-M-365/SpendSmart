@@ -27,19 +27,10 @@ const createNotification = async (req, res) => {
   }
 };
 
-// Get all notifications
-const getAllNotifications = async (req, res) => {
-  try {
-    const notifications = await Notification.find()
-      .populate('user', 'name email')
-      .populate('person', 'name email');
 
-    res.status(200).json(notifications);
-  } catch (err) {
-    console.error('Error fetching notifications:', err);
-    res.status(500).json({ message: 'Failed to fetch notifications' });
-  }
-};
+const User = require('../models/User'); 
+
+
 
 // Delete a notification by ID
 const deleteNotification = async (req, res) => {
@@ -59,8 +50,48 @@ const deleteNotification = async (req, res) => {
   }
 };
 
+const Transaction = require('../models/Transaction');
+
+const { v4: uuidv4 } = require('uuid'); 
+const markNotificationPaid = async (req, res) => {
+  try {
+    const notifId = req.params.id;
+
+    const notification = await Notification.findById(notifId).populate('person', 'name');
+    if (!notification) return res.status(404).json({ error: 'Notification not found' });
+
+    if (notification.status === 'paid') {
+      return res.status(400).json({ error: 'Already marked as paid' });
+    }
+
+    // 1. Update the notification
+    notification.status = 'paid';
+    await notification.save();
+
+    // 2. Create a negative transaction
+    const newTransaction = new Transaction({
+      transactionId: uuidv4(),
+      userId: notification.user,
+      title: `Settlement to ${notification.person?.name || 'Someone'}`,
+      category: 'Settlement',
+      amount: -Math.abs(notification.amount), // ensures it's negative
+      type: 'expense',
+      paymentMode: 'Wallet', // or any default you use
+      paymentTo: notification.person?.name || 'Unknown',
+      contributors: [],
+    });
+
+    await newTransaction.save();
+
+    res.json({ message: 'Notification marked as paid and transaction created' });
+  } catch (err) {
+    console.error('Mark Paid Error:', err.message);
+    res.status(500).json({ error: 'Failed to mark as paid' });
+  }
+};
+
 module.exports = {
+  deleteNotification,
   createNotification,
-  getAllNotifications,
-  deleteNotification
+  markNotificationPaid
 };

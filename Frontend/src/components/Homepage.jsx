@@ -64,7 +64,7 @@ export default function WelcomePage() {
     <div className="d-flex">
       <button className="btn btn-outline-light me-2 login-btn">
         <Link to="/login" style={{textDecoration:"none",color:"whitesmoke"}}>Login</Link></button>
-      <button className="btn btn-primary register-btn">Register</button>
+      <button className="btn btn-primary register-btn"><Link to="/register" style={{textDecoration:"none",color:"whitesmoke"}}>Register</Link></button>
     </div>
   </div>
 </nav>

@@ -1,0 +1,12 @@
+.bg-coin {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  filter: brightness(0) invert(0.85); /* Auto-dark mode adapt */
+  transition: all 0.3s ease-in-out;
+}
+@media (prefers-color-scheme: dark) {
+  .bg-coin {
+    filter: brightness(1.2) invert(0.2);
+  }
+}

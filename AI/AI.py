@@ -2,7 +2,7 @@ from fuzzywuzzy import process, fuzz
 import pandas as pd
 
 # Load dataset
-df = pd.read_csv("C:\\Users\\devma\\OneDrive\\Documents\\Desktop\\SpendSmart\\SpendSmart\\AI\\DataSet.csv")
+df = pd.read_csv("C:\\Users\\devma\\OneDrive\\Documents\\Desktop\\Projects\\SpendSmart\\SpendSmart\\AI\\DataSet.csv")
 
 # Create lowercase mapping
 item_to_category = dict(zip(df['Item'].str.lower(), df['Category']))

@@ -4,6 +4,9 @@ const router = express.Router();
 
 
 const Notification = require('../models/Notification'); // ✅ correct path
+const { markNotificationPaid } = require('../controllers/notificationController');
+
+router.put('/mark-paid/:id', markNotificationPaid);
 
 router.get('/:userId', async (req, res) => {
   try {
@@ -19,11 +22,11 @@ router.get('/:userId', async (req, res) => {
       let message = '';
 
       if (n.status === 'owed') {
-        message = `💸 You owe ₹${n.amount} to ${personName}`;
+        message = `💸 You owe ₹${Math.abs(n.amount).toFixed(2)} to ${personName}`;
       } else if (n.status === 'due') {
-        message = `💰 ${personName} owes you ₹${n.amount}`;
+        message = `💰 ${personName} owes you ₹${Math.abs(n.amount).toFixed(2)}`;
       } else if (n.status === 'paid') {
-        message = `✅ ₹${n.amount} settled with ${personName}`;
+        message = `✅ ₹${Math.abs(n.amount).toFixed(2)} settled with ${personName}`;
       }
 
       return { ...n._doc, message };
@@ -38,13 +41,11 @@ router.get('/:userId', async (req, res) => {
 
 
 const {
-  getAllNotifications,
   deleteNotification,
   createNotification
 } = require('../controllers/notificationController');
 
-// Example Express routes
-router.get('/api/notifications/:userId', getAllNotifications);
+
 router.delete('/api/notifications/delete/:id', deleteNotification);
 
 // POST a new notification (optional)

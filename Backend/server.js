@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const Notification = require('./models/Notification');
 const Tesseract = require('tesseract.js');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -91,6 +92,7 @@ app.use('/api/transactions', transactionRoutes);
 
 
 app.use('/api/users', userRoutes);
+
 
 
 app.use('/api/notifications', notificationRoutes);
