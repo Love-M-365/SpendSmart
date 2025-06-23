@@ -6,14 +6,13 @@ export default function BalancePage() {
   const [amountToAdd, setAmountToAdd] = useState('');
   const [balanceType, setBalanceType] = useState('cash'); // 'cash' or 'bank'
   const [balanceHistory, setBalanceHistory] = useState([]);
-  const apiUrl = import.meta.env.VITE_API_URL;
   // Fetching transactions based on the userId from localStorage
   useEffect(() => {
     const userId = localStorage.getItem('userId'); // Assuming userId is stored in local storage
     const fetchTransactions = async () => {
       try {
         // Fetch transactions for the logged-in user
-        const response = await axios.get(`${apiUrl}/api/transactions/${userId}`);
+        const response = await axios.get(`https://spendsmart-tkm2.onrender.com/api/transactions/${userId}`);
         setTransactions(response.data);
         setBalanceHistory(response.data); // Assuming transaction history needs to be displayed as well
       } catch (error) {
@@ -54,7 +53,7 @@ export default function BalancePage() {
 
     try {
       // Post the new transaction to the backend
-      await axios.post(`${apiUrl}/api/transactions/add`, newTransaction);
+      await axios.post(`https://spendsmart-tkm2.onrender.com/api/transactions/add`, newTransaction);
 
       // Update transaction list in the frontend
       setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);

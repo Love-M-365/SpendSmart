@@ -9,14 +9,14 @@ export default function ConfirmTransaction() {
   const navigate = useNavigate();
   const transactionData = location.state?.transaction;
   const [showAlert, setShowAlert] = useState(false);
-  const apiUrl = import.meta.env.VITE_API_URL;
+
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId');
 
   const handleConfirm = async () => {
   try {
     const response = await axios.post(
-      `${apiUrl}/api/transactions/add`,
+      `https://spendsmart-tkm2.onrender.com/api/transactions/add`,
       { ...transactionData, userId },
       {
         headers: {

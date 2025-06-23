@@ -10,7 +10,7 @@ export default function Login() {
     email: '',
     password: ''
   });
-  const apiUrl = import.meta.env.VITE_API_URL;
+  
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${apiUrl}/api/auth/login`, form);
+      const res = await axios.post(`https://spendsmart-tkm2.onrender.com/api/auth/login`, form);
       setMessage('Login successful');
       const { token, user } = res.data;
       localStorage.setItem('token', token);

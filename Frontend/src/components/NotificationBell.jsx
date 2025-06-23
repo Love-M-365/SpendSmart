@@ -8,12 +8,11 @@ function NotificationBell({ onMarkPaid }) {
   const [showToast, setShowToast] = useState(false);
   const [toastMsg, setToastMsg] = useState('');
   const [view, setView] = useState('unpaid'); // 'unpaid' or 'paid'
-  const apiUrl = import.meta.env.VITE_API_URL;
   const userId = localStorage.getItem("userId");
 
   const handleMarkAsPaid = async (id) => {
     try {
-      const res = await fetch(`${apiUrl}/api/notifications/mark-paid/${id}`, {
+      const res = await fetch(`https://spendsmart-tkm2.onrender.com/api/notifications/mark-paid/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -41,7 +40,7 @@ function NotificationBell({ onMarkPaid }) {
 
   const fetchNotifications = async () => {
     try {
-      const res = await fetch(`${apiUrl}/api/notifications/${userId}`);
+      const res = await fetch(`https://spendsmart-tkm2.onrender.com/api/notifications/${userId}`);
       const data = await res.json();
 
       setNotifications(data.notifications);
