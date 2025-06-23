@@ -24,7 +24,7 @@ const COLORS = [
   '#F06292', // Pinkish
 ];
 
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const ExpenseTracker = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [transactions, setTransactions] = useState([]);
@@ -41,7 +41,7 @@ const ExpenseTracker = () => {
   const fetchTransactions = async () => {
     try {
       if (!userId) return console.error("User ID not found in localStorage.");
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions/${userId}`);
+      const res = await axios.get(`${apiUrl}/api/transactions/${userId}`);
       setTransactions(res.data);
     } catch (error) {
       console.error("Failed to fetch transactions:", error);

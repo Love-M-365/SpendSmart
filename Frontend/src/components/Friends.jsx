@@ -10,18 +10,18 @@ function AllUsers() {
   const [addedFriends, setAddedFriends] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAlert, setShowAlert] = useState(false); // ✅ New state for showing alert
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   const currentUserId = localStorage.getItem('userId');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);
+        const userRes = await axios.get(`${apiUrl}/api/users`);
         const allUsers = Array.isArray(userRes.data) ? userRes.data : userRes.data.users || [];
         setUsers(allUsers);
 
         if (currentUserId) {
-          const friendRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${currentUserId}/friends`);
+          const friendRes = await axios.get(`${apiUrl}/api/users/${currentUserId}/friends`);
           setAddedFriends(friendRes.data);
         }
       } catch (err) {
@@ -37,8 +37,8 @@ function AllUsers() {
 
   const handleAddFriend = async (friendId) => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/users/${currentUserId}/add-friend`, { friendId });
-      const updatedFriends = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${currentUserId}/friends`);
+      await axios.post(`${apiUrl}/api/users/${currentUserId}/add-friend`, { friendId });
+      const updatedFriends = await axios.get(`${apiUrl}/api/users/${currentUserId}/friends`);
       setAddedFriends(updatedFriends.data);
       setShowAlert(true); // ✅ Show alert
       setTimeout(() => setShowAlert(false), 3000); // ✅ Auto-hide alert after 3 seconds

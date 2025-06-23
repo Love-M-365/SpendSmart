@@ -4,7 +4,7 @@ import { BsExclamationCircle, BsCheckCircle, BsClock } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./payment.css";
 import axios from "axios";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const PaymentCard = ({ payment, onMarkAsDone }) => {
   let icon, variant;
 
@@ -49,7 +49,7 @@ const PaymentsList = () => {
       const user = JSON.parse(localStorage.getItem("userId"));
       
 
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/notifications`);
+      const res = await axios.get(`${apiUrl}/api/notifications`);
       const allNotifications = res.data;
 
       // Filter notifications for this user only

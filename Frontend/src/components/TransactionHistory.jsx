@@ -3,13 +3,13 @@ import axios from 'axios';
 
 export default function TransactionHistory() {
   const [transactions, setTransactions] = useState([]);
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   // Fetching transactions on component load
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
         // Replace with the correct API endpoint
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions`);
+        const response = await axios.get(`${apiUrl}/api/transactions`);
         setTransactions(response.data);
       } catch (error) {
         console.error('Error fetching transactions:', error);

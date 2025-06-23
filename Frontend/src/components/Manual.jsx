@@ -42,7 +42,7 @@ export default function AddTransaction() {
     value: friend._id,
     label: friend.name,
   }));
-  
+  const apiUrl = import.meta.env.VITE_API_URL;
   const handleChange = (selectedOptions) => {
     setSelectedContributors(selectedOptions || []);
   };
@@ -52,7 +52,7 @@ export default function AddTransaction() {
     setTransactionId(id);
 
     // Fetch friends list
-    axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}/friends`)
+    axios.get(`${apiUrl}/api/users/${userId}/friends`)
       .then(res => {
         setFriends(res.data); // Assuming this response contains the friends list
       })
@@ -96,7 +96,7 @@ export default function AddTransaction() {
       // Loop through contributors and create owed notifications
       await Promise.all(
         selectedContributors.map(async (contributorId) => {
-          await axios.post(`${process.env.REACT_APP_API_URL}/api/notifications`, {
+          await axios.post(`${apiUrl}/api/notifications`, {
             user: contributorId.value,           // Receiver
             person: userId,       // Sender
             amount: dividedAmount,

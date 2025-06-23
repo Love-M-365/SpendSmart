@@ -9,14 +9,14 @@ export default function ConfirmTransaction() {
   const navigate = useNavigate();
   const transactionData = location.state?.transaction;
   const [showAlert, setShowAlert] = useState(false);
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId');
 
   const handleConfirm = async () => {
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/transactions/add`,
+      `${apiUrl}/api/transactions/add`,
       { ...transactionData, userId },
       {
         headers: {

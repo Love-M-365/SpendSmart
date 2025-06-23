@@ -18,7 +18,7 @@ const BillScanner = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const navigate = useNavigate();
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   const options = friends.map(friend => ({
     value: friend._id,
     label: friend.name,
@@ -37,7 +37,7 @@ const BillScanner = () => {
     const id = 'TXN-' + Math.floor(Math.random() * 1000000);
     setTransactionId(id);
 
-    axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}/friends`)
+    axios.get(`${apiUrl}/api/users/${userId}/friends`)
       .then(res => setFriends(res.data))
       .catch(err => console.error('Failed to fetch friends:', err));
   }, [userId]);
@@ -95,7 +95,7 @@ const BillScanner = () => {
     formData.append('image', file);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/ocr`, {
+      const response = await fetch(`${apiUrl}/api/ocr`, {
         method: 'POST',
         body: formData,
       });

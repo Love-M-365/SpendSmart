@@ -67,7 +67,7 @@ const BlurText = ({
     ],
     [direction]
   );
-
+  
   const fromSnapshot = animationFrom ?? defaultFrom;
   const toSnapshots = animationTo ?? defaultTo;
 
