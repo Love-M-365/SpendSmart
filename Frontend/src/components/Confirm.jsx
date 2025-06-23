@@ -28,7 +28,7 @@ export default function ConfirmTransaction() {
     setTimeout(() => {
       setShowAlert(false);
       navigate('/dashboard'); // ⬅ Redirect after 3 seconds
-    }, 3000);
+    }, 1000);
   } catch (error) {
     console.error('Error:', error);
     alert('Failed to save transaction.');

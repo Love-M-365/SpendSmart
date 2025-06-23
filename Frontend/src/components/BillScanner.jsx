@@ -48,7 +48,28 @@ const BillScanner = () => {
       selectedContributors.length > 0
         ? totalAmount / (selectedContributors.length + 1)
         : 0;
+    
 
+
+    try {
+      // Loop through contributors and create owed notifications
+      await Promise.all(
+        selectedContributors.map(async (contributorId) => {
+          await axios.post(`https://spendsmart-tkm2.onrender.com/api/notifications`, {
+            user: contributorId.value,           // Receiver
+            person: userId,       // Sender
+            amount: dividedAmount,
+            category:category,
+            message: `You owe ₹${dividedAmount.toFixed(2)} to your ${contributorId.label}`,
+            status: "owed"
+          });
+        })
+      );
+  
+      console.log("Notifications sent successfully.");
+    } catch (error) {
+      console.error("Error creating notifications:", error.message);
+    }
     navigate('/confirm', {
       state: {
         transaction: {

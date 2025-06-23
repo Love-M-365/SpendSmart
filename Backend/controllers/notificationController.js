@@ -3,15 +3,16 @@ const Notification = require('../models/Notification');
 // Create a new notification
 const createNotification = async (req, res) => {
   try {
-    const { user, person, status, amount } = req.body;
+    const { user, person ,category, status, amount } = req.body;
 
-    if (!user || !person || !status || !amount) {
+    if (!user || !person || !status || !category || !amount) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
     const newNotification = new Notification({
       user,      // receiver
       person,    // sender
+      category,
       status,
       amount,
       read: false,
@@ -73,7 +74,7 @@ const markNotificationPaid = async (req, res) => {
       transactionId: uuidv4(),
       userId: notification.user,
       title: `Settlement to ${notification.person?.name || 'Someone'}`,
-      category: 'Settlement',
+      category: `${notification.category}`,
       amount: -Math.abs(notification.amount), // ensures it's negative
       type: 'expense',
       paymentMode: 'Wallet', // or any default you use

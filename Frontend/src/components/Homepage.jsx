@@ -24,7 +24,6 @@ export default function WelcomePage() {
   const [isVisible, setIsVisible] = useState(false);
   const isMobile = useIsMobile();
   const [scrolled, setScrolled] = useState(false);
-  console.log("API:", process.env.REACT_APP_API_URL);
    const images = [
     feature1,
     feature2,
