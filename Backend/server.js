@@ -18,13 +18,21 @@ dotenv.config();
 connectDB();
 
 // Use CORS middleware
-app.use(
-  cors({
-    origin: 'http://localhost:5173', // Allow requests from your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-    credentials: true, // If using cookies or auth headers
-  })
-);
+const allowedOrigins = [
+  'http://localhost:5173', // local dev
+  'https://spend-smart-gamma.vercel.app' // vercel live
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 app.use(express.json({ limit: '10mb' })); // Allow large base64 payloads
