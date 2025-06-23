@@ -9,7 +9,7 @@ export default function TransactionHistory() {
     const fetchTransactions = async () => {
       try {
         // Replace with the correct API endpoint
-        const response = await axios.get('/api/transactions');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions`);
         setTransactions(response.data);
       } catch (error) {
         console.error('Error fetching transactions:', error);

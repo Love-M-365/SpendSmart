@@ -49,7 +49,7 @@ const PaymentsList = () => {
       const user = JSON.parse(localStorage.getItem("userId"));
       
 
-      const res = await axios.get("http://localhost:5000/api/notifications");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/notifications`);
       const allNotifications = res.data;
 
       // Filter notifications for this user only

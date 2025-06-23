@@ -37,7 +37,7 @@ const BillScanner = () => {
     const id = 'TXN-' + Math.floor(Math.random() * 1000000);
     setTransactionId(id);
 
-    axios.get(`http://localhost:5000/api/users/${userId}/friends`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}/friends`)
       .then(res => setFriends(res.data))
       .catch(err => console.error('Failed to fetch friends:', err));
   }, [userId]);
@@ -95,7 +95,7 @@ const BillScanner = () => {
     formData.append('image', file);
 
     try {
-      const response = await fetch('http://localhost:5000/api/ocr', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/ocr`, {
         method: 'POST',
         body: formData,
       });

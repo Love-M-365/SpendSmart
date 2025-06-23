@@ -41,7 +41,7 @@ const ExpenseTracker = () => {
   const fetchTransactions = async () => {
     try {
       if (!userId) return console.error("User ID not found in localStorage.");
-      const res = await axios.get(`http://localhost:5000/api/transactions/${userId}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions/${userId}`);
       setTransactions(res.data);
     } catch (error) {
       console.error("Failed to fetch transactions:", error);

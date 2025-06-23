@@ -16,7 +16,7 @@ export default function ConfirmTransaction() {
   const handleConfirm = async () => {
   try {
     const response = await axios.post(
-      'http://localhost:5000/api/transactions/add',
+      `${process.env.REACT_APP_API_URL}/api/transactions/add`,
       { ...transactionData, userId },
       {
         headers: {

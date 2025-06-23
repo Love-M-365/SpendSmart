@@ -13,7 +13,7 @@ export default function BalancePage() {
     const fetchTransactions = async () => {
       try {
         // Fetch transactions for the logged-in user
-        const response = await axios.get(`/api/transactions/${userId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions/${userId}`);
         setTransactions(response.data);
         setBalanceHistory(response.data); // Assuming transaction history needs to be displayed as well
       } catch (error) {
@@ -54,7 +54,7 @@ export default function BalancePage() {
 
     try {
       // Post the new transaction to the backend
-      await axios.post('/api/transactions/add', newTransaction);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/transactions/add`, newTransaction);
 
       // Update transaction list in the frontend
       setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);

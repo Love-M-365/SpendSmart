@@ -13,7 +13,7 @@ function NotificationBell({ onMarkPaid }) {
 
   const handleMarkAsPaid = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/notifications/mark-paid/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/notifications/mark-paid/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -41,7 +41,7 @@ function NotificationBell({ onMarkPaid }) {
 
   const fetchNotifications = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/notifications/${userId}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/notifications/${userId}`);
       const data = await res.json();
 
       setNotifications(data.notifications);
