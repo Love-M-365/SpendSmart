@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+  .carousel-item {
+    padding: 1rem 0;
+  }
+
+  .carousel-item h2 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-item p {
+    font-size: 1rem;
+  }
+}

@@ -16,25 +16,21 @@
   color: #f0f0f0;
   font-size: 1rem;
 }
-
 @media (max-width: 768px) {
-  .carousel-caption {
-    padding: 10px;
+  .feature-row {
+    flex-direction: column !important;
+    text-align: center;
   }
 
-  .carousel-caption h5 {
-    font-size: 1.2rem;
+  .feature-row img {
+    margin-bottom: 1rem;
   }
 
-  .carousel-caption p {
-    font-size: 0.9rem;
+  .feature-row h2 {
+    font-size: 1.5rem;
   }
-}
-.carousel-item img {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.4s ease;
-}
 
-.carousel-item img:hover {
-  transform: scale(1.02);
+  .feature-row p {
+    font-size: 1rem;
+  }
 }

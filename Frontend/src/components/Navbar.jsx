@@ -1,59 +1,39 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
-import NotificationBell from './NotificationBell';
+import './Navbar.css';
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
-  const handleToggle = () => setIsNavCollapsed(!isNavCollapsed);
   const handleLogout = () => {
     localStorage.clear();
     navigate('/login');
   };
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm fixed-top">
-      <Link className="navbar-brand d-flex align-items-center" to="/">
-        <img src={logo} alt="logo" style={{ height: "2rem", width: "2rem", marginRight: "0.5rem" }} />
-        <span className="fw-bold">Spend Smart</span>
-      </Link>
+    <nav className="ss-navbar-wrapper">
+      <div className="ss-navbar-left">
+        <Link to="/" className="ss-navbar-brand">
+          <img src={logo}  style={{width:"2rem",height:"2rem"}} alt="logo" />
+          <span>Spend Smart</span>
+        </Link>
+      </div>
 
-      <button
-        className="navbar-toggler"
-        type="button"
-        onClick={handleToggle}
-        aria-controls="navbarNav"
-        aria-expanded={!isNavCollapsed ? true : false}
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+      <div className={`ss-navbar-menu ${menuOpen ? 'ss-open' : ''}`}>
+        <Link to="/dashboard" onClick={closeMenu}>Dashboard</Link>
+        <Link to="/friends" onClick={closeMenu}>Friends</Link>
+        <Link to="/underconstruction" onClick={closeMenu}>Support</Link>
+        <button className="ss-navbar-logout" onClick={handleLogout}>Logout</button>
+      </div>
 
-      <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarNav">
-        <ul className="navbar-nav ms-auto d-flex align-items-center gap-3">
-          <li className="nav-item">
-            <Link className="nav-link" to="/dashboard">Dashboard</Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link" to="/friends">Friends</Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link" to="/analytics">Analytics</Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link" to="/support">Support</Link>
-          </li>
-
-         
-          <li className="nav-item">
-            <button className="btn btn-outline-danger" onClick={handleLogout}>Logout</button>
-          </li>
-        </ul>
+      <div className={`ss-navbar-hamburger ${menuOpen ? 'ss-open' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
+        <div className="ss-line"></div>
+        <div className="ss-line"></div>
+        <div className="ss-line"></div>
       </div>
     </nav>
   );

@@ -1,10 +1,9 @@
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './features.css';
 import screen1 from "../assets/dashboard.png";
 import screen2 from "../assets/billsplit.png";
-import screen3 from "../assets/feature3.png";
-import React, { useEffect }  from "react";
+import screen3 from "../assets/AIFeature.png";
+import React, { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -17,7 +16,7 @@ const features = [
   {
     title: "Smart Bill Scanning (OCR + AI)",
     description: "Upload a bill or receipt and let the system auto-detect the amount using OCR and categorize it intelligently using AI. Zero manual effort!",
-    image: "/assets/ocr_ai.png",
+    image: screen3,
   },
   {
     title: "Split Bills with Friends",
@@ -25,6 +24,7 @@ const features = [
     image: screen2,
   },
 ];
+
 export default function FeatureZigZag() {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -35,7 +35,7 @@ export default function FeatureZigZag() {
       <h1 className="text-center fw-bold mb-5">Explore Our Key Features</h1>
       {features.map((feature, index) => (
         <div
-          className="row align-items-center my-5"
+          className={`row align-items-center my-5 feature-row`}
           key={index}
           data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
         >
@@ -43,7 +43,7 @@ export default function FeatureZigZag() {
             <img
               src={feature.image}
               alt={feature.title}
-              className="img-fluid rounded shadow-lg"
+              className="img-fluid rounded shadow-lg mb-3 mb-md-0"
               style={{ maxHeight: "400px", objectFit: "cover", width: "100%" }}
             />
           </div>
