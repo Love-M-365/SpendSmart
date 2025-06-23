@@ -18,25 +18,25 @@ export default function AddTransaction() {
   const navigate = useNavigate();
 
   const categories = [
-    { id: 'garments', label: 'Garments', icon: '👕' },
-    { id: 'dairy', label: 'Dairy', icon: '🧀' },
-    { id: 'groceries', label: 'Groceries', icon: '🥡' },
+    { id: 'Garments', label: 'Garments', icon: '👕' },
+    { id: 'Dairy', label: 'Dairy', icon: '🧀' },
+    { id: 'Groceries', label: 'Groceries', icon: '🥡' },
     { id: 'food', label: 'Food', icon: '🍜' },
-    { id: 'beverage', label: 'Beverage', icon: '🍷' },
-    { id: 'dailyneed', label: 'Daily Need', icon: '🪥' },
-    { id: 'beautywellness', label: 'Beauty and Wellness', icon: '❣' },
-    { id: 'stationary', label: 'Stationary', icon: '📚' },
-    { id: 'vegetable', label: 'Vegetable', icon: '🍄‍🟫' },
-    { id: 'fruits', label: 'Fruits', icon: '🍓' },
-    { id: 'travel', label: 'Travel', icon: '🛺' },
-    { id: 'rent', label: 'Rent', icon: '🏚' },
-    { id: 'subscription', label: 'Subscription', icon: '👑' },
-    { id: 'electronics', label: 'Electronics', icon: '📱' },
-    { id: 'furniture', label: 'Furniture', icon: '🛌🏼' },
-    { id: 'allowance', label: 'Allowance', icon: '💰' },
-    { id: 'salary', label: 'Salary', icon: '💳' },
-    { id: 'profit', label: 'Profit', icon: '💹' },
-    { id: 'other', label: 'Other', icon: '🪙' }
+    { id: 'Beverage', label: 'Beverage', icon: '🍷' },
+    { id: 'Daily Need', label: 'Daily Need', icon: '🪥' },
+    { id: 'Beauty and Wellness', label: 'Beauty and Wellness', icon: '❣' },
+    { id: 'Stationery', label: 'Stationery', icon: '📚' },
+    { id: 'Vegetable', label: 'Vegetable', icon: '🍄‍🟫' },
+    { id: 'Fruits', label: 'Fruits', icon: '🍓' },
+    { id: 'Travel', label: 'Travel', icon: '🛺' },
+    { id: 'Rent', label: 'Rent', icon: '🏚' },
+    { id: 'Subscription', label: 'Subscription', icon: '👑' },
+    { id: 'Electronics', label: 'Electronics', icon: '📱' },
+    { id: 'Furniture', label: 'Furniture', icon: '🛌🏼' },
+    { id: 'Allowance', label: 'Allowance', icon: '💰' },
+    { id: 'Salary', label: 'Salary', icon: '💳' },
+    { id: 'Profit', label: 'Profit', icon: '💹' },
+    { id: 'Other', label: 'Other', icon: '🪙' }
   ];
   const options = friends.map(friend => ({
     value: friend._id,

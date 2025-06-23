@@ -110,7 +110,7 @@ def predict_category():
     # Contextual override: Check for dining-related words
     dining_keywords = ["cafe", "restaurant", "hotel", "food court", "thali", "combo", "meal", "buffet"]
     if any(word in input_text for word in dining_keywords):
-        return jsonify({"category": "food"})
+        return jsonify({"category": "Food"})
 
     # Fuzzy match logic
     best_match, score = process.extractOne(input_text, item_to_category.keys(), scorer=fuzz.partial_ratio)
