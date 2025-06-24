@@ -125,7 +125,7 @@ const BillScanner = () => {
       setExtractedText(result.text);
       setTotalAmount(result.amount);
 
-      const categoryRes = await fetch('http://127.0.0.1:5001/predict-category', {
+      const categoryRes = await fetch('https://ai-e9ai.onrender.com/predict-category', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: result.text }),
