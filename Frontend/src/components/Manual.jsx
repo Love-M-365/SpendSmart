@@ -100,7 +100,7 @@ export default function AddTransaction() {
             user: contributorId.value,           // Receiver
             person: userId,       // Sender
             amount: dividedAmount,
-            category:category,
+            category,
             message: `You owe ₹${dividedAmount.toFixed(2)} to your ${contributorId.label}`,
             status: "owed"
           });
