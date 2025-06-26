@@ -21,7 +21,7 @@ export default function AddTransaction() {
     { id: 'Garments', label: 'Garments', icon: '👕' },
     { id: 'Dairy', label: 'Dairy', icon: '🧀' },
     { id: 'Groceries', label: 'Groceries', icon: '🥡' },
-    { id: 'food', label: 'Food', icon: '🍜' },
+    { id: 'Food', label: 'Food', icon: '🍜' },
     { id: 'Beverage', label: 'Beverage', icon: '🍷' },
     { id: 'Daily Need', label: 'Daily Need', icon: '🪥' },
     { id: 'Beauty and Wellness', label: 'Beauty and Wellness', icon: '❣' },
