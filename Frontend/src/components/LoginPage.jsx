@@ -6,6 +6,8 @@ import './loginpage.css';
 import logo from '../assets/logo.png';
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
+
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -18,19 +20,23 @@ export default function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post(`https://spendsmart-tkm2.onrender.com/api/auth/login`, form);
-      setMessage('Login successful');
-      const { token, user } = res.data;
-      localStorage.setItem('token', token);
-      localStorage.setItem('userId', user._id);
-      navigate('/dashboard');
-    } catch (err) {
-      setMessage(err.response?.data?.message || 'Login failed');
-    }
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setMessage('');
+  try {
+    const res = await axios.post(`https://spendsmart-tkm2.onrender.com/api/auth/login`, form);
+    setMessage('Login successful');
+    const { token, user } = res.data;
+    localStorage.setItem('token', token);
+    localStorage.setItem('userId', user._id);
+    navigate('/dashboard');
+  } catch (err) {
+    setMessage(err.response?.data?.message || 'Login failed');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
@@ -66,15 +72,25 @@ export default function Login() {
               required
             />
 
-            <button className="oauthButton continue-btn" type="submit">
-              Continue
-              <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m6 17 5-5-5-5"></path>
-                <path d="m13 17 5-5-5-5"></path>
-              </svg>
-            </button>
+            <button className="oauthButton continue-btn" type="submit" disabled={loading}>
+  {loading ? (
+    <>
+      <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      Logging in...
+    </>
+  ) : (
+    <>
+      Continue
+      <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m6 17 5-5-5-5"></path>
+        <path d="m13 17 5-5-5-5"></path>
+      </svg>
+    </>
+  )}
+</button>
+
           </form>
 
           <p className="text-center mt-3">

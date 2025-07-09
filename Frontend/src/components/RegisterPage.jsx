@@ -8,6 +8,7 @@ export default function Register() {
     name: '', age: '', phone: '', upiId: '', email: '',
     password: '', confirmPassword: '', gender: '', profession: ''
   });
+  const [loading, setLoading] = useState(false);
 
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -15,21 +16,26 @@ export default function Register() {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (form.password !== form.confirmPassword) {
-      return setMessage("Passwords do not match");
-    }
-    try {
-      const res = await axios.post(`https://spendsmart-tkm2.onrender.com/api/auth/register`, form);
-      setMessage(res.data.message);
-      navigate('/dashboard');
-      const { token, user } = res.data;
-      localStorage.setItem('token', token);
-      localStorage.setItem('userId', user._id);
-    } catch (err) {
-      setMessage(err.response?.data?.message || "Registration failed");
-    }
-  };
+  e.preventDefault();
+  if (form.password !== form.confirmPassword) {
+    return setMessage("Passwords do not match");
+  }
+  setLoading(true);
+  setMessage('');
+  try {
+    const res = await axios.post(`https://spendsmart-tkm2.onrender.com/api/auth/register`, form);
+    setMessage(res.data.message);
+    const { token, user } = res.data;
+    localStorage.setItem('token', token);
+    localStorage.setItem('userId', user._id);
+    navigate('/dashboard');
+  } catch (err) {
+    setMessage(err.response?.data?.message || "Registration failed");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="container d-flex align-items-center justify-content-center min-vh-100">
@@ -86,15 +92,25 @@ export default function Register() {
                 <input type="password" placeholder="Password" name="password" onChange={handleChange} required className="mb-2 w-100" />
                 <input type="password" placeholder="Confirm Password" name="confirmPassword" onChange={handleChange} className="mb-3 w-100" />
 
-                <button className="oauthButton" type="submit">
-                  Continue
-                  <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="m6 17 5-5-5-5"></path>
-                    <path d="m13 17 5-5-5-5"></path>
-                  </svg>
-                </button>
+                <button className="oauthButton" type="submit" disabled={loading}>
+  {loading ? (
+    <>
+      <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      Creating Account...
+    </>
+  ) : (
+    <>
+      Continue
+      <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m6 17 5-5-5-5"></path>
+        <path d="m13 17 5-5-5-5"></path>
+      </svg>
+    </>
+  )}
+</button>
+
 
                 {/* Login Redirect Text */}
                 <p className="text-center mt-3">
