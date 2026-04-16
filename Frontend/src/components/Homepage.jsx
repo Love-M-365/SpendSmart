@@ -356,20 +356,7 @@ export default function WelcomePage() {
         </div>
 
         {/* Contact Info Section */}
-        <div className="col-md-6 mt-4 mt-md-0">
-          <h4 className="mb-3">Contact Information</h4>
-          <ul className="list-unstyled">
-            <li className="mb-3">
-              <i className="bi bi-telephone-fill me-2"></i> +91 9315534818
-            </li>
-            <li className="mb-3">
-              <i className="bi bi-envelope-fill me-2"></i> lovemaggo3605@gmail.com
-            </li>
-            <li>
-              <i className="bi bi-geo-alt-fill me-2"></i> 
-            </li>
-          </ul>
-        </div>
+        
       </div>
     </div>
         </div>
