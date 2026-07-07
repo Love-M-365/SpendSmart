@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from './Navbar';
+import { CreditCard, DollarSign, ListChecks } from 'lucide-react';
+import { API_BASE } from '../api';
 
 export default function BalancePage() {
   const [transactions, setTransactions] = useState([]);
   const [amountToAdd, setAmountToAdd] = useState('');
   const [balanceType, setBalanceType] = useState('cash'); // 'cash' or 'bank'
   const [balanceHistory, setBalanceHistory] = useState([]);
+
   // Fetching transactions based on the userId from localStorage
   useEffect(() => {
-    const userId = localStorage.getItem('userId'); // Assuming userId is stored in local storage
+    const userId = localStorage.getItem('userId');
     const fetchTransactions = async () => {
       try {
-        // Fetch transactions for the logged-in user
-        const response = await axios.get(`https://spendsmart-tkm2.onrender.com/api/transactions/${userId}`);
+        const response = await axios.get(`${API_BASE}/transactions/${userId}`);
         setTransactions(response.data);
-        setBalanceHistory(response.data); // Assuming transaction history needs to be displayed as well
+        setBalanceHistory(response.data);
       } catch (error) {
         console.error('Error fetching transactions:', error);
       }
@@ -43,7 +46,7 @@ export default function BalancePage() {
       return;
     }
 
-    const userId = localStorage.getItem('userId'); // Assuming userId is stored in localStorage
+    const userId = localStorage.getItem('userId');
     const newTransaction = {
       userId: userId,
       amount: parseFloat(amountToAdd),
@@ -52,16 +55,10 @@ export default function BalancePage() {
     };
 
     try {
-      // Post the new transaction to the backend
-      await axios.post(`https://spendsmart-tkm2.onrender.com/api/transactions/add`, newTransaction);
-
-      // Update transaction list in the frontend
+      await axios.post(`${API_BASE}/transactions/add`, newTransaction);
       setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);
-
-      // Update balance history as well
       setBalanceHistory((prevHistory) => [...prevHistory, newTransaction]);
-
-      setAmountToAdd(''); // Clear input field after adding money
+      setAmountToAdd('');
     } catch (error) {
       console.error('Error adding money:', error);
       alert('Failed to add money.');
@@ -72,85 +69,104 @@ export default function BalancePage() {
   const bankBalance = calculateBalance('bank');
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4 text-center">Balance Page</h2>
+    <>
+      <Navbar />
+      <div className="container" style={{ marginTop: "6.5rem", marginBottom: "3rem" }}>
+        <h2 className="mb-4 text-center fw-bold">Balance Overview</h2>
 
-      <div className="row mb-4">
-        {/* Cash Balance */}
-        <div className="col-md-6 mb-3">
-          <div className="card shadow-sm">
-            <div className="card-header bg-primary text-white">
-              <h5>Cash Balance</h5>
+        {/* Balance Metric Boxes */}
+        <div className="row g-4 mb-5">
+          <div className="col-md-6">
+            <div className="premium-card text-center" style={{ borderLeft: "6px solid #6366f1" }}>
+              <span className="text-secondary small d-block mb-1">CASH BALANCE</span>
+              <strong className="fs-3 text-primary">₹{cashBalance.toFixed(2)}</strong>
             </div>
-            <div className="card-body">
-              <p><strong>₹{cashBalance}</strong></p>
+          </div>
+          <div className="col-md-6">
+            <div className="premium-card text-center" style={{ borderLeft: "6px solid #10b981" }}>
+              <span className="text-secondary small d-block mb-1">BANK BALANCE</span>
+              <strong className="fs-3 text-success">₹{bankBalance.toFixed(2)}</strong>
             </div>
           </div>
         </div>
 
-        {/* Bank Balance */}
-        <div className="col-md-6 mb-3">
-          <div className="card shadow-sm">
-            <div className="card-header bg-primary text-white">
-              <h5>Bank Balance</h5>
-            </div>
-            <div className="card-body">
-              <p><strong>₹{bankBalance}</strong></p>
+        <div className="row g-4">
+          {/* Add Money Form */}
+          <div className="col-md-6">
+            <div className="premium-card">
+              <h4 className="mb-4 fw-bold d-flex align-items-center gap-2">
+                <DollarSign className="text-success" /> Add Balance
+              </h4>
+              <form onSubmit={handleAddMoney} className="auth-form">
+                <div className="modern-input-group">
+                  <label className="modern-input-label">Balance Type</label>
+                  <select
+                    className="modern-input"
+                    value={balanceType}
+                    onChange={(e) => setBalanceType(e.target.value)}
+                  >
+                    <option value="cash">Cash</option>
+                    <option value="bank">Bank</option>
+                  </select>
+                </div>
+
+                <div className="modern-input-group mt-3">
+                  <label className="modern-input-label">Amount to Add (INR)</label>
+                  <input
+                    type="number"
+                    className="modern-input"
+                    placeholder="0.00"
+                    value={amountToAdd}
+                    onChange={(e) => setAmountToAdd(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <button type="submit" className="btn-premium-primary w-100 mt-4">
+                  <CreditCard size={16} /> Add Money
+                </button>
+              </form>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Form to Add Money */}
-      <div className="row">
-        <div className="col-md-6">
-          <form onSubmit={handleAddMoney}>
-            <div className="form-group">
-              <label htmlFor="balanceType">Select Balance Type</label>
-              <select
-                className="form-control"
-                id="balanceType"
-                value={balanceType}
-                onChange={(e) => setBalanceType(e.target.value)}
-              >
-                <option value="cash">Cash</option>
-                <option value="bank">Bank</option>
-              </select>
-            </div>
-
-            <div className="form-group mt-3">
-              <label htmlFor="amountToAdd">Amount to Add</label>
-              <input
-                type="number"
-                className="form-control"
-                id="amountToAdd"
-                value={amountToAdd}
-                onChange={(e) => setAmountToAdd(e.target.value)}
-                required
-              />
-            </div>
-
-            <button type="submit" className="btn btn-success mt-3 w-100">
-              Add Money
-            </button>
-          </form>
-        </div>
-
-        {/* Balance History */}
-        <div className="col-md-6">
-          <h4>Balance History</h4>
-          <div className="list-group">
-            {balanceHistory.map((transaction, index) => (
-              <div className="list-group-item" key={index}>
-                <p>
-                  <strong>{transaction.paymentMode === 'cash' ? 'Cash' : 'Bank'}</strong> | 
-                  ₹{transaction.amount} | {new Date(transaction.date).toLocaleString()}
-                </p>
+          {/* Balance History List */}
+          <div className="col-md-6">
+            <div className="premium-card">
+              <h4 className="mb-4 fw-bold d-flex align-items-center gap-2">
+                <ListChecks className="text-primary" /> Balance History
+              </h4>
+              <div className="d-flex flex-column gap-2" style={{ maxHeight: "300px", overflowY: "auto" }}>
+                {balanceHistory.length === 0 ? (
+                  <p className="text-center text-muted py-4">No history transactions recorded.</p>
+                ) : (
+                  balanceHistory.map((transaction, index) => (
+                    <div 
+                      className="d-flex align-items-center justify-content-between p-3 border rounded-3 bg-card"
+                      key={index}
+                      style={{
+                        backgroundColor: "var(--bg-card)",
+                        borderColor: "var(--border-color)"
+                      }}
+                    >
+                      <div>
+                        <span className="badge bg-secondary-subtle text-secondary-emphasis" style={{ textTransform: "uppercase" }}>
+                          {transaction.paymentMode === 'cash' ? 'Cash' : 'Bank'}
+                        </span>
+                        <span className="text-secondary small d-block mt-1">
+                          {new Date(transaction.date || transaction.createdAt).toLocaleString()}
+                        </span>
+                      </div>
+                      <strong className={transaction.amount > 0 ? "text-success" : "text-danger"}>
+                        {transaction.amount > 0 ? "+" : ""} ₹{parseFloat(transaction.amount || 0).toFixed(2)}
+                      </strong>
+                    </div>
+                  ))
+                )}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -3,15 +3,15 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE } from '../api';
 
 export default function AddTransaction() {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-  const [contributors, setContributors] = useState([]);
   const [paymentMode, setPaymentMode] = useState('');
   const [paymentTo, setPaymentTo] = useState('');
-  const [userId, setUserId] = useState(localStorage.getItem('userId') || '');
+  const [userId] = useState(localStorage.getItem('userId') || '');
   const [transactionId, setTransactionId] = useState('');
   const [friends, setFriends] = useState([]);
   const [selectedContributors, setSelectedContributors] = useState([]);
@@ -38,6 +38,7 @@ export default function AddTransaction() {
     { id: 'Profit', label: 'Profit', icon: '💹' },
     { id: 'Other', label: 'Other', icon: '🪙' }
   ];
+
   const options = friends.map(friend => ({
     value: friend._id,
     label: friend.name,
@@ -52,56 +53,32 @@ export default function AddTransaction() {
     setTransactionId(id);
 
     // Fetch friends list
-    axios.get(`https://spendsmart-tkm2.onrender.com/api/users/${userId}/friends`)
+    axios.get(`${API_BASE}/users/${userId}/friends`)
       .then(res => {
-        setFriends(res.data); // Assuming this response contains the friends list
+        setFriends(res.data);
       })
       .catch(err => {
         console.error('Failed to fetch friends:', err);
       });
   }, [userId]);
 
-  const handleContributorSelection = (friendId) => {
-    if (!selectedContributors.includes(friendId)) {
-      setSelectedContributors([...selectedContributors, friendId]);
-    }
-  };
-
-  const handleRemoveContributor = (id) => {
-  setSelectedContributors(prev => prev.filter(contributorId => contributorId !== id));
-};
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const dividedAmount = selectedContributors.length > 0 
-  ? amount / (selectedContributors.length + 1)
-  : 0;
-
+      ? amount / (selectedContributors.length + 1)
+      : 0;
     
-    const transactionData = {
-      transactionId,
-      userId,
-      title,
-      category,
-      amount,
-      contributors,
-      paymentMode,
-      paymentTo,
-      dividedAmount,
-    };
-
     try {
       // Loop through contributors and create owed notifications
       await Promise.all(
         selectedContributors.map(async (contributorId) => {
-          await axios.post(`https://spendsmart-tkm2.onrender.com/api/notifications`, {
+          await axios.post(`${API_BASE}/notifications`, {
             user: contributorId.value,           // Receiver
             person: userId,       // Sender
             amount: dividedAmount,
             category,
-            message: `You owe ₹${dividedAmount.toFixed(2)} to your ${contributorId.label}`,
+            message: `You owe ₹${dividedAmount.toFixed(2)} to your friend ${localStorage.getItem('userName') || 'Friend'}`,
             status: "owed"
           });
         })
@@ -122,78 +99,188 @@ export default function AddTransaction() {
           category,
           paymentMode,
           paymentTo,
-          contributors:selectedContributors.map(c => c.value),
+          contributors: selectedContributors.map(c => c.value),
           transactionId,
         },
       },
     });
-  }
+  };
+
+  // Custom styling override for React Select component
+  const customSelectStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: 'var(--bg-input)',
+      borderColor: state.isFocused ? 'var(--primary)' : 'var(--border-color)',
+      borderRadius: '14px',
+      padding: '0.2rem',
+      boxShadow: state.isFocused ? '0 0 0 4px var(--primary-glow)' : 'none',
+      borderWidth: '1.5px',
+      '&:hover': {
+        borderColor: 'var(--primary)'
+      }
+    }),
+    menu: (provided) => ({
+      ...provided,
+      backgroundColor: 'var(--bg-card)',
+      border: '1px solid var(--border-color)',
+      borderRadius: '14px',
+      boxShadow: 'var(--shadow-lg)'
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected 
+        ? 'var(--primary)' 
+        : state.isFocused 
+        ? 'var(--bg-app)' 
+        : 'transparent',
+      color: state.isSelected ? '#ffffff' : 'var(--text-primary)',
+      cursor: 'pointer'
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      backgroundColor: 'var(--bg-app)',
+      borderRadius: '8px',
+      border: '1px solid var(--border-color)'
+    }),
+    multiValueLabel: (provided) => ({
+      ...provided,
+      color: 'var(--text-primary)'
+    }),
+    multiValueRemove: (provided) => ({
+      ...provided,
+      color: 'var(--danger)',
+      '&:hover': {
+        backgroundColor: 'var(--danger-glow)',
+        color: 'var(--danger)'
+      }
+    })
+  };
+
   return (
     <>
       <Navbar />
-      <div className="form-container" style={{ marginTop: "6rem" }}>
-        <h2>Add New Transaction</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-
-          <input
-            type="number"
-            placeholder="Amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            required
-          />
-
-          <div className="category-grid">
-            {categories.map((cat) => (
-              <div
-                key={cat.id}
-                className={`category-card ${category === cat.id ? 'selected' : ''}`}
-                onClick={() => {
-                  setCategory(cat.id);
-                }}
-              >
-                <span className="icon">{cat.icon}</span>
-                <span className="label">{cat.label}</span>
+      <div className="container" style={{ marginTop: "6.5rem", marginBottom: "3rem", maxWidth: "680px" }}>
+        <div className="premium-card">
+          <h2 className="mb-4 text-center" style={{ fontWeight: 800 }}>Add New Transaction</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="modern-input-group">
+                  <label className="modern-input-label">Title / Description</label>
+                  <input
+                    type="text"
+                    className="modern-input"
+                    placeholder="e.g. Dinner, Rent, Uber"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                  />
+                </div>
               </div>
-            ))}
-          </div>
+              <div className="col-md-6">
+                <div className="modern-input-group">
+                  <label className="modern-input-label">Amount (INR)</label>
+                  <input
+                    type="number"
+                    className="modern-input"
+                    placeholder="0.00"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
 
-          <div className="container mt-3">
-      <label className="form-label">Select Contributors</label>
-      <Select
-        isMulti
-        options={options}
-        value={selectedContributors}
-        onChange={handleChange}
-        className="mb-3"
-      />
+            <div className="mb-3">
+              <label className="modern-input-label">Category</label>
+              <div className="category-grid" style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+                gap: "10px",
+                maxHeight: "220px",
+                overflowY: "auto",
+                padding: "8px",
+                border: "1px solid var(--border-color)",
+                borderRadius: "14px",
+                backgroundColor: "var(--bg-input)",
+                marginBottom: "1.25rem"
+              }}>
+                {categories.map((cat) => (
+                  <div
+                    key={cat.id}
+                    className={`category-card ${category === cat.id ? 'selected' : ''}`}
+                    onClick={() => setCategory(cat.id)}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "10px",
+                      borderRadius: "10px",
+                      cursor: "pointer",
+                      backgroundColor: category === cat.id ? "rgba(37,99,235,0.15)" : "var(--bg-card)",
+                      border: category === cat.id ? "2px solid var(--primary)" : "1px solid var(--border-color)",
+                      transition: "all 0.2s ease"
+                    }}
+                  >
+                    <span style={{ fontSize: "1.5rem" }}>{cat.icon}</span>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "var(--text-primary)", marginTop: "4px" }}>{cat.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-     
-    </div>
-          <input
-            type="text"
-            placeholder="Payment To"
-            value={paymentTo}
-            onChange={(e) => setPaymentTo(e.target.value)}
-          />
+            <div className="mb-4">
+              <label className="modern-input-label">Select Contributors (To split bill)</label>
+              <Select
+                isMulti
+                options={options}
+                value={selectedContributors}
+                onChange={handleChange}
+                styles={customSelectStyles}
+                placeholder="Type friend's name..."
+              />
+            </div>
 
-          <select value={paymentMode} onChange={(e) => setPaymentMode(e.target.value)} required>
-            <option value="">Select Payment Mode</option>
-            <option value="cash">Cash</option>
-            <option value="upi">UPI</option>
-            <option value="card">Card</option>
-            <option value="other">Other</option>
-          </select>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="modern-input-group">
+                  <label className="modern-input-label">Payment To</label>
+                  <input
+                    type="text"
+                    className="modern-input"
+                    placeholder="Store/Person Name"
+                    value={paymentTo}
+                    onChange={(e) => setPaymentTo(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="modern-input-group">
+                  <label className="modern-input-label">Payment Mode</label>
+                  <select 
+                    className="modern-input" 
+                    value={paymentMode} 
+                    onChange={(e) => setPaymentMode(e.target.value)} 
+                    required
+                  >
+                    <option value="">Select Mode</option>
+                    <option value="cash">Cash</option>
+                    <option value="upi">UPI</option>
+                    <option value="card">Card</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-          <button type="submit" className="submit-btn">Add Transaction</button>
-        </form>
+            <button type="submit" className="btn-premium-primary w-100 mt-3" style={{ padding: "0.85rem" }}>
+              Add Transaction
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

@@ -1,5 +1,29 @@
-/* payment.css */
-.card {
-    border-radius: 1rem;
-  }
-  
+/* PAYMENTS SYSTEM STYLES */
+.payments-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.payment-grid-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+  height: 100%;
+}
+
+.payment-grid-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.payment-status-badge {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+}
